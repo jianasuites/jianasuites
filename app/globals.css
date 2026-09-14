@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-offwhite: #e5dedb;
+  --color-sage: #3d483a;
+  --color-black: #000000;
+  --color-charcoal: #33362b;
+  --color-white: #ffffff;
+  --color-watermark: #c7c2ba; /* light muted gray shared across all watermark instances */
+  --color-watermark-rgb: 199, 194, 186;
+
+  --font-primary-serif: "DM Serif Display", Georgia, serif;
+  --font-secondary-serif: "EB Garamond", Garamond, Georgia, serif;
+  --font-clean-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-watermark: "Playfair Display", "Cinzel Decorative", Georgia, serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-offwhite);
+  color: var(--color-charcoal);
+  font-family: var(--font-secondary-serif);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-primary-serif);
+}
+
+p,
+blockquote {
+  font-family: var(--font-secondary-serif);
+}
+
+img {
+  max-width: 100%;
+}
+
+::selection {
+  background-color: var(--color-sage);
+  color: var(--color-white);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.section-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+.eyebrow {
+  font-family: var(--font-clean-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.nav-link {
+  font-family: var(--font-clean-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: capitalize;
+  transition: color 0.2s ease-in-out;
+}
+
+.btn-lakeside {
+  font-family: var(--font-clean-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background-color: var(--color-sage);
+  color: var(--color-white);
+  border-radius: 9999px;
+  padding: 12px 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.25s ease-in-out;
+  border: 1px solid var(--color-sage);
+  cursor: pointer;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.btn-lakeside:hover {
+  background-color: var(--color-charcoal);
+  border-color: var(--color-charcoal);
+  color: var(--color-white);
+}
+
+.btn-lakeside-white {
+  font-family: var(--font-clean-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  background-color: var(--color-white);
+  color: var(--color-sage);
+  border-radius: 9999px;
+  padding: 12px 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.25s ease-in-out;
+  border: 1px solid var(--color-white);
+  cursor: pointer;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.btn-lakeside-white:hover {
+  background-color: var(--color-offwhite);
+  border-color: var(--color-offwhite);
+  color: var(--color-black);
+}
+
+.footer-logo {
+  display: block;
+  width: min(280px, 70vw);
+  height: auto;
+}
+
+.image-band-wordmark {
+  will-change: transform;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
