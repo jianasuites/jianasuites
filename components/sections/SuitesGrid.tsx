@@ -6,7 +6,7 @@ import { whatsappHref } from "@/lib/whatsapp";
 
 const suites = [
   {
-    name: "Premium Lake View King Bed",
+    name: "Premium King Lake View Room",
     images: [
       "/images/_DSC3844_result.webp",
       "/images/_DSC3818_result.webp",
@@ -16,10 +16,10 @@ const suites = [
       "A calm, spacious king-bed room with direct panoramic views of Arekere Lake, refined contemporary finishes, and peaceful natural morning light.",
     rate: "Contact for best rates",
     message:
-      "Hi, I'm interested in the Premium Lake View King Bed at Jiana Suites. Could you share availability and rates?",
+      "Hi, I'm interested in the Premium King Lake View Room at Jiana Suites. Could you share availability and rates?",
   },
   {
-    name: "Premium Partial Lake View King",
+    name: "Premium King Partial Lake View Room",
     images: [
       "/images/_DSC3922_result.webp",
       "/images/_DSC3876_result.webp",
@@ -29,10 +29,10 @@ const suites = [
       "A comfortable king-bed sanctuary featuring a partial lake outlook, plush bedding, and an uncluttered setting ideal for both corporate and leisure stays.",
     rate: "Contact for best rates",
     message:
-      "Hi, I'm interested in the Premium Partial Lake View King Bed at Jiana Suites. Could you share availability and rates?",
+      "Hi, I'm interested in the Premium King Partial Lake View Room at Jiana Suites. Could you share availability and rates?",
   },
   {
-    name: "Premium Twin Sharing Lake View",
+    name: "Premium Twin Lake View Room",
     images: [
       "/images/_DSC3925_result.webp",
       "/images/_DSC3879_result.webp",
@@ -42,10 +42,10 @@ const suites = [
       "Two premium single beds overlooking the serene lake, tailored for colleagues, friends, or traveling companions seeking individual sleeping comfort.",
     rate: "Contact for best rates",
     message:
-      "Hi, I'm interested in the Premium Twin Sharing Lake View at Jiana Suites. Could you share availability and rates?",
+      "Hi, I'm interested in the Premium Twin Lake View Room at Jiana Suites. Could you share availability and rates?",
   },
   {
-    name: "Deluxe Twin Sharing Partial View",
+    name: "Deluxe Twin Partial Lake View Room",
     images: [
       "/images/_DSC3963_result.webp",
       "/images/_DSC3906_result.webp",
@@ -55,10 +55,10 @@ const suites = [
       "Thoughtfully appointed twin room with partial lake views, smart workspace amenities, and an easy layout for short or extended stays.",
     rate: "Contact for best rates",
     message:
-      "Hi, I'm interested in the Deluxe Twin Sharing Partial Lake View at Jiana Suites. Could you share availability and rates?",
+      "Hi, I'm interested in the Deluxe Twin Partial Lake View Room at Jiana Suites. Could you share availability and rates?",
   },
   {
-    name: "Deluxe Double Occupancy",
+    name: "Deluxe Queen Room",
     images: [
       "/images/_DSC3831_result.webp",
       "/images/IMG_0588_result.webp",
@@ -68,10 +68,10 @@ const suites = [
       "A quiet double room crafted for restful sleep, complete with modern climate control, high-speed Wi-Fi, and personalized room service.",
     rate: "Contact for best rates",
     message:
-      "Hi, I'm interested in the Deluxe Double Occupancy at Jiana Suites. Could you share availability and rates?",
+      "Hi, I'm interested in the Deluxe Queen Room at Jiana Suites. Could you share availability and rates?",
   },
   {
-    name: "Deluxe Double Occupancy Lake View",
+    name: "Deluxe Queen Lake View Room",
     images: [
       "/images/_DSC3894_result.webp",
       "/images/_DSC3821_result.webp",
@@ -81,7 +81,7 @@ const suites = [
       "Deluxe comfort combined with restful Arekere Lake vistas, offering guests an elevated stay experience at an exceptional value.",
     rate: "Contact for best rates",
     message:
-      "Hi, I'm interested in the Deluxe Double Occupancy Lake View at Jiana Suites. Could you share availability and rates?",
+      "Hi, I'm interested in the Deluxe Queen Lake View Room at Jiana Suites. Could you share availability and rates?",
   },
 ];
 

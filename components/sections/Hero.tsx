@@ -23,11 +23,15 @@ export function Hero() {
     <section className="relative overflow-visible bg-sage text-white pt-24 md:pt-28">
       {/* Hero Visual Banner */}
       <div className="relative min-h-[72vh] md:min-h-[78vh] flex flex-col items-center justify-center overflow-hidden pb-24 md:pb-28">
-        <img
-          src="/images/DJI_20260909174744_0219_D_result.webp"
-          alt="Jiana Suites tranquil lakefront hotel exterior"
-          className="absolute inset-0 h-full w-full object-cover object-center"
-        />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/videos/hero-video.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-black/45" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/60" />
 

@@ -54,7 +54,7 @@ export function ImageBand() {
       className="relative h-[55vh] min-h-[380px] w-full overflow-hidden bg-sage"
     >
       <img
-        src="/images/file_000000009cec820eb2998da769287dbb_result.webp"
+        src="/images/file_000000000a008211a952181c9ea83005_result.webp"
         alt="Jiana Suites luxury lounge and reception"
         className="absolute inset-0 h-full w-full object-cover object-center scale-105"
       />

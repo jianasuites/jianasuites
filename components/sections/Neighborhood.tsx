@@ -1,15 +1,19 @@
 import { Mail, MapPin, Navigation, Phone } from "lucide-react";
 import { business } from "@/lib/business";
 
-const landmarks = [
+const leftLandmarks = [
   "Arekere Lake — opposite the hotel",
-  "Bannerghatta Road — 3 min drive",
   "Apollo Hospital — 8 min drive",
-  "Christ University — 12 min drive",
   "IIM Bangalore — 12 min drive",
-  "Royal Meenakshi Mall — 10 min drive",
   "Accenture & WeWork — easy access",
+];
+
+const rightLandmarks = [
+  "Bannerghatta Road — 3 min drive",
+  "Christ University — 12 min drive",
+  "Royal Meenakshi Mall — 10 min drive",
   "Bannerghatta Biological Park — weekend drive",
+  "Brigade Millennium — 6 min drive",
 ];
 
 export function Neighborhood() {
@@ -28,12 +32,22 @@ export function Neighborhood() {
           </p>
 
           <div className="mt-10 grid gap-3.5 sm:grid-cols-2">
-            {landmarks.map((landmark) => (
-              <div key={landmark} className="flex items-start gap-3 border-t border-offwhite/20 pt-4">
-                <MapPin className="mt-1 shrink-0 text-offwhite/90" size={17} aria-hidden="true" />
-                <p className="font-body text-[0.95rem] leading-[1.6] text-offwhite/90">{landmark}</p>
-              </div>
-            ))}
+            <div className="flex flex-col gap-3.5">
+              {leftLandmarks.map((landmark) => (
+                <div key={landmark} className="flex items-start gap-3 border-t border-offwhite/20 pt-4">
+                  <MapPin className="mt-1 shrink-0 text-offwhite/90" size={17} aria-hidden="true" />
+                  <p className="font-body text-[0.95rem] leading-[1.6] text-offwhite/90">{landmark}</p>
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-col gap-3.5">
+              {rightLandmarks.map((landmark) => (
+                <div key={landmark} className="flex items-start gap-3 border-t border-offwhite/20 pt-4">
+                  <MapPin className="mt-1 shrink-0 text-offwhite/90" size={17} aria-hidden="true" />
+                  <p className="font-body text-[0.95rem] leading-[1.6] text-offwhite/90">{landmark}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
