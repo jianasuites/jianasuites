@@ -50,7 +50,7 @@ export function Intro() {
           <div className="relative">
             <div className="overflow-hidden rounded-sm shadow-xl border border-offwhite/15">
               <img
-                src="_DSC3876_result.webp"
+                src="file_000000000a008211a952181c9ea83005_result.webp"
                 alt="Jiana Suites luxury hotel grounds and lakefront"
                 className="h-[380px] sm:h-[460px] w-full object-cover transition duration-700 hover:scale-105"
               />

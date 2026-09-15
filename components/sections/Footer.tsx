@@ -10,9 +10,9 @@ export function Footer() {
       <div className="section-shell">
         {/* Giant Watermark with light muted gray tone #c7c2ba referencing unified --color-watermark */}
         <div
-          className="select-none text-center font-watermark font-bold text-[14vw] md:text-[17vw] uppercase leading-none pointer-events-none pb-4 sm:pb-8 md:pb-12 text-watermark/70"
+          className="select-none text-center font-watermark font-bold text-[8vw] sm:text-[9vw] md:text-[10vw] uppercase leading-none pointer-events-none pb-4 sm:pb-8 md:pb-12 text-watermark/70 whitespace-nowrap"
         >
-          JIANA
+          JIANA SUITES
         </div>
 
         {/* Three Columns with clear breathing room below the watermark */}

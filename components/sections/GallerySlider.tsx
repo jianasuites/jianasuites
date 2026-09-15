@@ -19,7 +19,7 @@ const galleryImages = [
   {
     title: "Boutique Reception & Lobby",
     subtitle: "Warm marble finishes, ambient pendant lighting, and 24/7 concierge",
-    src: "/images/file_000000009cec820eb2998da769287dbb_result.webp",
+    src: "/images/_DSC3818_result.webp",
     alt: "Jiana Suites reception desk with amber pendant lights and marble wall",
   },
   {
