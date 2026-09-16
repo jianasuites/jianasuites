@@ -9,8 +9,7 @@ const suites = [
     name: "Premium King Lake View Room",
     images: [
       "/images/file_000000004ccc8211b7a248dc7c6ebccf_result.webp",
-      "/images/_DSC3818_result.webp",
-      "/images/_DSC3821_result.webp",
+
     ],
     description:
       "A calm, spacious king-bed room with direct panoramic views of Arekere Lake, refined contemporary finishes, and peaceful natural morning light.",
@@ -22,8 +21,7 @@ const suites = [
     name: "Premium King Partial Lake View Room",
     images: [
       "/images/_DSC3922_result.webp",
-      "/images/_DSC3876_result.webp",
-      "/images/_DSC3945_result.webp",
+
     ],
     description:
       "A comfortable king-bed sanctuary featuring a partial lake outlook, plush bedding, and an uncluttered setting ideal for both corporate and leisure stays.",
@@ -35,8 +33,7 @@ const suites = [
     name: "Premium Twin Lake View Room",
     images: [
       "/images/_DSC3925_result.webp",
-      "/images/_DSC3879_result.webp",
-      "/images/file_000000000a008211a952181c9ea83005_result.webp",
+
     ],
     description:
       "Two premium single beds overlooking the serene lake, tailored for colleagues, friends, or traveling companions seeking individual sleeping comfort.",
@@ -48,8 +45,7 @@ const suites = [
     name: "Deluxe Twin Partial Lake View Room",
     images: [
       "/images/_DSC3963_result.webp",
-      "/images/_DSC3906_result.webp",
-      "/images/_DSC3976_result.webp",
+
     ],
     description:
       "Thoughtfully appointed twin room with partial lake views, smart workspace amenities, and an easy layout for short or extended stays.",
@@ -61,8 +57,7 @@ const suites = [
     name: "Deluxe Queen Room",
     images: [
       "/images/_DSC3894_result.webp",
-      "/images/IMG_0588_result.webp",
-      "/images/_DSC3818_result.webp",
+
     ],
     description:
       "A quiet double room crafted for restful sleep, complete with modern climate control, high-speed Wi-Fi, and personalized room service.",
@@ -74,8 +69,8 @@ const suites = [
     name: "Deluxe Queen Lake View Room",
     images: [
       "/images/_DSC3831_result.webp",
-      "/images/_DSC3821_result.webp",
-      "/images/_DSC3844_result.webp",
+      "/images/_DSC3887esult.webp",
+      "/images/_DSC3906(1)_result.webp",
     ],
     description:
       "Deluxe comfort combined with restful Arekere Lake vistas, offering guests an elevated stay experience at an exceptional value.",
