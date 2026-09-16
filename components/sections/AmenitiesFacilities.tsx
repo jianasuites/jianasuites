@@ -32,7 +32,10 @@ const facilities = [
   { label: "High Speed Wi-Fi", icon: Wifi },
   { label: "24-Hour Hot Water", icon: ShowerHead },
   { label: "Power Back-Up", icon: PlugZap },
-  { label: "Room Service", icon: Monitor },
+  { label: "Parking in Facilities", icon: Monitor },
+  { label: "CCTV", icon: Monitor },
+  { label: "Lift access", icon: Monitor },
+  { label: "Fire safety system", icon: Monitor },
 ];
 
 export function AmenitiesFacilities() {

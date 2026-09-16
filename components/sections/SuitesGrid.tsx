@@ -95,12 +95,11 @@ export function SuitesGrid() {
               Rooms & Suites
             </p>
             <h2 className="mt-4 font-display text-[2rem] md:text-[3rem] font-normal leading-[1.15] text-sage">
-              Accommodations with authentic charm
+              Premium Stays with a Distinctive Charm
             </h2>
           </div>
           <p className="font-body text-[1rem] md:text-[1.125rem] font-normal leading-[1.65] text-charcoal">
-            Each of our rooms pairs calming lakefront views with soft linens, modern bathroom appointments, and everyday amenities tailored for business guests, medical visitors, families, and extended stays.
-          </p>
+            Each of our rooms pairs calming lakefront views with soft linens, modern bathroom appointments, and everyday amenities tailored for business guests, medical visitors, families, and extended stays.          </p>
         </div>
 
         <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">

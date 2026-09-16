@@ -10,11 +10,14 @@ export function Enquire() {
             Enquire
           </p>
           <h2 className="mt-4 font-display text-[2rem] md:text-[3rem] font-normal leading-[1.15] text-sage">
-            Tell us your dates. We will help plan your stay.
+            Plan Your Stay With Us
           </h2>
           <p className="mx-auto mt-5 max-w-xl font-body text-[1rem] md:text-[1.125rem] font-normal leading-[1.65] text-charcoal">
-            No booking fee to enquire. Share your travel dates and stay requirements on WhatsApp, and our concierge team will respond with availability, best rates, and the ideal room option.
-          </p>
+            Share your travel dates and stay preferences with us, and our team will help you find the right room at the best available rate.
+
+            Whether you’re visiting for business, a short stay, or an extended stay, we’re here to make your booking simple and your stay comfortable.
+
+            No booking fee for direct enquiries.          </p>
           <div className="mt-9">
             <a
               href={whatsappHref("Hi, I'd like to check room availability and rates at Jiana Suites.")}

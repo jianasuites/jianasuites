@@ -20,7 +20,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative overflow-visible bg-sage text-white pt-24 md:pt-28">
+    <section id="hero" className="relative overflow-visible bg-sage text-white pt-24 md:pt-28">
       {/* Hero Visual Banner */}
       <div className="relative min-h-[72vh] md:min-h-[78vh] flex flex-col items-center justify-center overflow-hidden pb-24 md:pb-28">
         <video

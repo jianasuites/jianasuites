@@ -15,8 +15,7 @@ export function Intro() {
         {/* Centered Quote matching Lakeside's reference layout */}
         <div className="mx-auto max-w-3xl text-center pb-16 md:pb-20 border-b border-offwhite/15">
           <blockquote className="font-body text-xl sm:text-2xl md:text-[28px] font-normal leading-[1.45] text-offwhite text-balance">
-            “Nestled on the peaceful shore of Arekere Lake, with tranquil waters and verdant views, we warmly invite guests to experience luxury living and genuine South Bangalore hospitality right from our doorstep.”
-          </blockquote>
+            Nestled on the peaceful shore of Arekere Lake, with tranquil waters and lush green views verdant views, we warmly invite guests to experience luxury living and genuine South Bangalore hospitality right from our doorstep.         </blockquote>
         </div>
 
         {/* Two-Column Story Section */}
@@ -30,8 +29,9 @@ export function Intro() {
             </h2>
             <div className="mt-6 space-y-5 font-body text-[1rem] md:text-[1.125rem] font-normal leading-[1.65] text-offwhite/90">
               <p>
-                Welcome to Jiana Suites, an elegant boutique retreat in JP Nagar 7th Phase where contemporary comfort meets soothing lakefront serenity. Set directly opposite Arekere Lake and minutes from Bannerghatta Road, the hotel offers a refined haven for discerning business and leisure travelers.
-              </p>
+                Welcome to Jiana Suites, an elegant boutique hotel in JP Nagar 7th Phase, where contemporary comfort meets the calm of Arekere Lake. Ideally located directly opposite the lake and just minutes from Bannerghatta Road, Jiana Suites offers a comfortable and refined stay for business and leisure travellers.
+
+                Every detail has been thoughtfully designed for a seamless stay, with serene interiors, 24-hour guest assistance, ample parking, high-speed Wi-Fi, and excellent connectivity to Apollo & Fortis Hospital, Christ University, IIM Bangalore, and major business destinations across South Bengaluru.              </p>
               <p>
                 Every detail has been thoughtfully crafted: serene interiors, 24-hour attentive service, ample secure parking, high-speed Wi-Fi, and effortless connectivity to Apollo Hospital, Christ University, IIM Bangalore, and prime South Bangalore business destinations.
               </p>

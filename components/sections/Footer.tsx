@@ -137,13 +137,24 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom Logo Image — Scaled up matching Lakeside's footer closing mark */}
-        <div className="mt-16 mb-6 flex justify-center">
+        {/* Bottom Logo Image & Designer Credit */}
+        <div className="mt-16 mb-6 flex flex-col items-center justify-center text-center">
           <img
             src="/jiana-suites-logo.webp"
             alt="Jiana Suites Logo"
             className="h-20 sm:h-24 md:h-28 w-auto object-contain mx-auto transition-transform hover:scale-105"
           />
+          <p className="font-nav text-[0.75rem] tracking-[0.08em] text-charcoal/70 mt-3">
+            Designed by{" "}
+            <a
+              href="https://dishanwebwing.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 hover:text-sage transition"
+            >
+              DishanWebWing
+            </a>
+          </p>
         </div>
       </div>
     </footer>
