@@ -8,7 +8,7 @@ const suites = [
   {
     name: "Premium King Lake View Room",
     images: [
-      "/images/_DSC3844_result.webp",
+      "/images/file_000000004ccc8211b7a248dc7c6ebccf_result.webp",
       "/images/_DSC3818_result.webp",
       "/images/_DSC3821_result.webp",
     ],
@@ -60,7 +60,7 @@ const suites = [
   {
     name: "Deluxe Queen Room",
     images: [
-      "/images/_DSC3831_result.webp",
+      "/images/_DSC3894_result.webp",
       "/images/IMG_0588_result.webp",
       "/images/_DSC3818_result.webp",
     ],
@@ -73,7 +73,7 @@ const suites = [
   {
     name: "Deluxe Queen Lake View Room",
     images: [
-      "/images/_DSC3894_result.webp",
+      "/images/_DSC3831_result.webp",
       "/images/_DSC3821_result.webp",
       "/images/_DSC3844_result.webp",
     ],
@@ -191,9 +191,8 @@ function RoomCard({ suite }: { suite: (typeof suites)[number] }) {
                     setCurrentIndex(idx);
                   }}
                   aria-label={`Go to photo ${idx + 1}`}
-                  className={`h-1.5 rounded-full transition-all ${
-                    idx === currentIndex ? "w-5 bg-white shadow-sm" : "w-1.5 bg-white/60"
-                  }`}
+                  className={`h-1.5 rounded-full transition-all ${idx === currentIndex ? "w-5 bg-white shadow-sm" : "w-1.5 bg-white/60"
+                    }`}
                 />
               ))}
             </div>
