@@ -1,5 +1,4 @@
-import { MessageCircle } from "lucide-react";
-import { whatsappHref } from "@/lib/whatsapp";
+import { Phone } from "lucide-react";
 
 export function Enquire() {
   return (
@@ -20,11 +19,11 @@ export function Enquire() {
             No booking fee for direct enquiries.          </p>
           <div className="mt-9">
             <a
-              href={whatsappHref("Hi, I'd like to check room availability and rates at Jiana Suites.")}
+              href="tel:+919900075360"
               className="btn-lakeside min-h-[44px] text-[0.75rem] font-bold tracking-[0.14em] uppercase px-8 py-3.5 shadow-md inline-flex items-center justify-center gap-2"
             >
-              <MessageCircle size={17} aria-hidden="true" />
-              Enquire on WhatsApp
+              <Phone size={16} aria-hidden="true" />
+              Call Us
             </a>
           </div>
         </div>
