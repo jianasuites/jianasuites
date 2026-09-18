@@ -42,7 +42,9 @@ export function Hero() {
           </p>
 
           <h1 className="font-display text-[2.5rem] md:text-[4rem] font-normal leading-[1.12] tracking-[-0.01em] max-w-4xl text-balance text-white">
-            The Quintessential Lakefront Hotel
+            Jiana Suites 
+            <br />
+                       Luxury Lakefront Hotel
           </h1>
 
           <p className="eyebrow text-offwhite/80 text-[0.7rem] md:text-[0.75rem] font-semibold tracking-[0.2em] uppercase leading-none mt-5">
