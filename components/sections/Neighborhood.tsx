@@ -2,18 +2,17 @@ import { Mail, MapPin, Navigation, Phone } from "lucide-react";
 import { business } from "@/lib/business";
 
 const leftLandmarks = [
-  "Arekere Lake — opposite the hotel",
-  "Apollo Hospital — 8 min drive",
-  "IIM Bangalore — 12 min drive",
-  "Accenture & WeWork — easy access",
+  "Arekere Lake — directly opposite the hotel",
+  "Apollo Hospital & Fortis Hospital — 8 min drive",
+  "IIM Bangalore & Christ University — 10–12 min drive",
+  "Accenture & WeWork JP Nagar — easy corporate access",
 ];
 
 const rightLandmarks = [
-  "Bannerghatta Road — 3 min drive",
-  "Christ University — 12 min drive",
-  "Royal Meenakshi Mall — 10 min drive",
-  "Bannerghatta Biological Park — weekend drive",
-  "Brigade Millennium — 6 min drive",
+  "Bannerghatta Road — 3 min (10 min to tech parks)",
+  "Brigade Millennium & JP Nagar 7th Phase — 6 min drive",
+  "Royal Meenakshi Mall & Third Wave Coffee — 8–10 min drive",
+  "Bannerghatta Biological Park & National Park — easy weekend drive",
 ];
 
 export function Neighborhood() {

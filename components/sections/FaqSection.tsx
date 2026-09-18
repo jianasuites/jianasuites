@@ -5,29 +5,34 @@ import { ChevronDown } from "lucide-react";
 
 export const faqs = [
   {
-    question: "Where is Jiana Suites located?",
+    question: "What is the best hotel near Arekere Lake and JP Nagar 7th Phase?",
     answer:
-      "Jiana Suites is located at 435, 8th Cross Road, Lakshmi Layout, JP Nagar 7th Phase, Arekere, Bangalore – 560076, directly opposite Arekere Lake. The hotel offers seamless connectivity to Bannerghatta Main Road, JP Nagar metro stations, and central business hubs across South Bangalore.",
+      "Jiana Suites is regarded as one of the best 3-star boutique hotels near Arekere Lake, located at 435, 8th Cross Road, Lakshmi Layout, JP Nagar 7th Phase, Bangalore – 560076. Located directly opposite Arekere Lake, it offers premium lake-view rooms, high-speed Wi-Fi, secure parking, and immediate access to Bannerghatta Road.",
   },
   {
-    question: "Is Jiana Suites good for business travelers?",
+    question: "Which hotel is closest to Apollo Hospital and Fortis Hospital in JP Nagar?",
     answer:
-      "Yes. Jiana Suites offers high-speed Wi-Fi, quiet rooms, dedicated work desks, and quick access to corporate hubs like Brigade Millennium, Accenture, and WeWork, making it well-suited for business stays.",
+      "Jiana Suites is approximately an 8-minute drive from Apollo Hospital and Fortis Hospital on Bannerghatta Road, making it the most convenient accommodation in South Bangalore for medical visitors, patients, and accompanying families.",
   },
   {
-    question: "Does Jiana Suites offer long-stay or monthly rates?",
+    question: "Is Jiana Suites suitable for business travelers and corporate stays?",
     answer:
-      "Yes, Jiana Suites offers extended-stay and monthly rate options for guests visiting for medical treatment, work, or longer personal stays.",
+      "Yes. Jiana Suites is a dedicated corporate stay hotel in JP Nagar, equipped with complimentary high-speed Wi-Fi, ergonomic in-room workstations, 24-hour power backup, and rapid access to business hubs including Brigade Millennium, Accenture, and WeWork.",
   },
   {
-    question: "How close is Jiana Suites to Apollo Hospital?",
+    question: "Does Jiana Suites offer long stay, extended stay, or monthly rental options?",
     answer:
-      "Apollo Hospital is approximately an 8-minute drive from Jiana Suites, making it a convenient option for medical visitors and their families.",
+      "Yes, Jiana Suites provides attractive long stay and monthly rental hotel packages in JP Nagar 7th Phase, with tailored tariffs, daily housekeeping, laundry assistance, and personalized room service for extended corporate or medical visits.",
+  },
+  {
+    question: "Is there a hotel directly opposite Arekere Lake with lake-view rooms?",
+    answer:
+      "Yes, Jiana Suites is set directly opposite Arekere Lake, featuring peaceful lake-view rooms and twin sharing rooms in South Bangalore with soothing water reflections and contemporary interior comforts.",
   },
   {
     question: "How do I book a room at Jiana Suites?",
     answer:
-      "Rooms at Jiana Suites can be booked directly by contacting the hotel via WhatsApp or phone at +91 99000 75360 — there is no online booking fee for direct enquiries.",
+      "You can book directly with Jiana Suites by calling +91 99000 75360 or messaging our front desk team on WhatsApp. Booking direct guarantees the best available rates with zero online booking fees.",
   },
 ];
 
@@ -53,7 +58,7 @@ export function FaqSection() {
             Everything You Need to Know
           </h2>
           <p className="mx-auto mt-4 max-w-xl font-body text-[1rem] md:text-[1.125rem] font-normal leading-[1.65] text-charcoal">
-            Find answers to common questions about Jiana Suites, our lake-view rooms opposite Arekere Lake in JP Nagar 7th Phase, and booking direct.
+            Find answers to common questions about Jiana Suites, lake-view rooms opposite Arekere Lake, corporate stays in JP Nagar 7th Phase, and direct booking.
           </p>
         </div>
 

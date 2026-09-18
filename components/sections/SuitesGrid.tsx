@@ -11,7 +11,7 @@ const suites = [
       "/images/file_000000004ccc8211b7a248dc7c6ebccf_result.webp",
     ],
     description:
-      "A calm, spacious king-bed room with direct panoramic views of Arekere Lake, refined contemporary finishes, and peaceful natural morning light.",
+      "A premier king bed hotel room in Bangalore with uninterrupted panoramic views of Arekere Lake, plush bedding, high-speed Wi-Fi, and peaceful natural morning light.",
     rate: "Contact for best rates",
     message:
       "Hi, I'm interested in the Premium King Lake View Room at Jiana Suites. Could you share availability and rates?",
@@ -22,7 +22,7 @@ const suites = [
       "/images/_DSC3922_result.webp",
     ],
     description:
-      "A comfortable king-bed sanctuary featuring a partial lake outlook, plush bedding, and an uncluttered setting ideal for both corporate and leisure stays.",
+      "A comfortable king-bed sanctuary featuring a partial lake outlook, uncluttered modern interior, and quiet workspace ideal for corporate and leisure stays.",
     rate: "Contact for best rates",
     message:
       "Hi, I'm interested in the Premium King Partial Lake View Room at Jiana Suites. Could you share availability and rates?",
@@ -33,7 +33,7 @@ const suites = [
       "/images/_DSC3925_result.webp",
     ],
     description:
-      "Two premium single beds overlooking the serene lake, tailored for colleagues, friends, or traveling companions seeking individual sleeping comfort.",
+      "Two premium single beds overlooking the serene lake, tailored for colleagues, friends, or medical attendants seeking comfortable twin sharing rooms in Bangalore.",
     rate: "Contact for best rates",
     message:
       "Hi, I'm interested in the Premium Twin Lake View Room at Jiana Suites. Could you share availability and rates?",
@@ -44,7 +44,7 @@ const suites = [
       "/images/_DSC3963_result.webp",
     ],
     description:
-      "Thoughtfully appointed twin room with partial lake views, smart workspace amenities, and an easy layout for short or extended stays.",
+      "Thoughtfully appointed twin sharing room with partial lake views, smart workstation, 24-hour hot water, and an easy layout for short or extended stays in JP Nagar.",
     rate: "Contact for best rates",
     message:
       "Hi, I'm interested in the Deluxe Twin Partial Lake View Room at Jiana Suites. Could you share availability and rates?",
@@ -55,7 +55,7 @@ const suites = [
       "/images/_DSC3894_result.webp",
     ],
     description:
-      "A quiet double room crafted for restful sleep, complete with modern climate control, high-speed Wi-Fi, and personalized room service.",
+      "A peaceful double room crafted for restful sleep, complete with modern climate control, high-speed Wi-Fi, power backup, and personalized room service.",
     rate: "Contact for best rates",
     message:
       "Hi, I'm interested in the Deluxe Queen Room at Jiana Suites. Could you share availability and rates?",
@@ -66,7 +66,7 @@ const suites = [
       "/images/_DSC3831_result.webp",
     ],
     description:
-      "Deluxe comfort combined with restful Arekere Lake vistas, offering guests an elevated stay experience at an exceptional value.",
+      "Deluxe comfort combined with restful Arekere Lake vistas, smart TV entertainment, and elevated hospitality at an exceptional value in South Bangalore.",
     rate: "Contact for best rates",
     message:
       "Hi, I'm interested in the Deluxe Queen Lake View Room at Jiana Suites. Could you share availability and rates?",
@@ -92,9 +92,7 @@ export function SuitesGrid() {
           </div>
 
           <p className="font-body text-[1rem] md:text-[1.125rem] font-normal leading-[1.65] text-charcoal">
-            Each of our rooms pairs calming lakefront views with soft linens,
-            modern bathroom appointments, and everyday amenities tailored for
-            business guests, medical visitors, families, and extended stays.
+            Offering some of the finest lake view rooms in Bangalore, each suite pairs calming Arekere Lake vistas with soft linens, 24-hour hot water, fast Wi-Fi, and amenities tailored for business travelers, medical visitors, families, and extended stays in South Bangalore.
           </p>
         </div>
 

@@ -47,8 +47,8 @@ export function Hero() {
                        Luxury Lakefront Hotel
           </h1>
 
-          <p className="eyebrow text-offwhite/80 text-[0.7rem] md:text-[0.75rem] font-semibold tracking-[0.2em] uppercase leading-none mt-5">
-            This is Jiana Suites
+          <p className="eyebrow text-offwhite/85 text-[0.7rem] md:text-[0.75rem] font-semibold tracking-[0.2em] uppercase leading-none mt-5">
+            Top-Rated 3-Star Hotel Opposite Arekere Lake · JP Nagar 7th Phase
           </p>
 
           <div className="mt-7">

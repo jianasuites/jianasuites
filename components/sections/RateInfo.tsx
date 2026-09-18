@@ -3,15 +3,15 @@ import { whatsappHref } from "@/lib/whatsapp";
 const tiers = [
   {
     title: "Corporate Stays",
-    copy: "Quiet work-friendly rooms, high-speed Wi-Fi, ample parking, and rapid access to Accenture, WeWork, Brigade Millennium, and Bannerghatta Road.",
+    copy: "Top choice for business travelers and company guests: quiet rooms, ergonomic work desks, high-speed Wi-Fi, ample parking, and rapid access to Accenture, WeWork JP Nagar, Brigade Millennium, and Bannerghatta Road.",
   },
   {
     title: "Medical Visits",
-    copy: "A tranquil lakefront address located only minutes from Apollo Hospital and Fortis Hospital, with caring service that makes medical visits effortless.",
+    copy: "Comfortable medical visitor accommodation just an 8-minute drive from Apollo Hospital and Fortis Hospital. A tranquil lakefront retreat with lift access, power backup, and caring 24-hour support.",
   },
   {
     title: "Extended Stays",
-    copy: "Tailored long-term rates for travelers staying beyond a few nights, with personalized housekeeping, flexible amenities, and direct support.",
+    copy: "Tailored long-stay and monthly rental hotel rates in JP Nagar 7th Phase for guests on extended assignments or personal visits, complete with daily housekeeping and dedicated assistance.",
   },
 ];
 
