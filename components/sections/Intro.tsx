@@ -30,10 +30,9 @@ export function Intro() {
             <div className="mt-6 space-y-5 font-body text-[1rem] md:text-[1.125rem] font-normal leading-[1.65] text-offwhite/90">
               <p>
                 Welcome to Jiana Suites, an elegant boutique hotel in JP Nagar 7th Phase, where contemporary comfort meets the calm of Arekere Lake. Ideally located directly opposite the lake and just minutes from Bannerghatta Road, Jiana Suites offers a comfortable and refined stay for business and leisure travellers.
-
-                Every detail has been thoughtfully designed for a seamless stay, with serene interiors, 24-hour guest assistance, ample parking, high-speed Wi-Fi, and excellent connectivity to Apollo & Fortis Hospital, Christ University, IIM Bangalore, and major business destinations across South Bengaluru.              </p>
+              </p>
               <p>
-                Every detail has been thoughtfully crafted: serene interiors, 24-hour attentive service, ample secure parking, high-speed Wi-Fi, and effortless connectivity to Apollo Hospital, Christ University, IIM Bangalore, and prime South Bangalore business destinations.
+                Every detail has been thoughtfully designed for a seamless stay, with serene interiors, 24-hour guest assistance, ample secure parking, high-speed Wi-Fi, and effortless connectivity to Apollo Hospital, Fortis Hospital, Christ University, IIM Bangalore, and prime business hubs across South Bengaluru.
               </p>
             </div>
 

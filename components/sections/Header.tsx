@@ -11,6 +11,7 @@ const menuItems = [
   { href: "#gallery", label: "Gallery" },
   { href: "#amenities", label: "Amenities" },
   { href: "#neighborhood", label: "Location" },
+  { href: "#faq", label: "FAQ" },
   { href: "#enquire", label: "Contact" },
 ];
 

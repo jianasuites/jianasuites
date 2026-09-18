@@ -164,7 +164,7 @@ function RoomCard({ suite }: { suite: (typeof suites)[number] }) {
       >
         <img
           src={suite.images[currentIndex]}
-          alt={`${suite.name} - Photo ${currentIndex + 1}`}
+          alt={`${suite.name} at Jiana Suites overlooking Arekere Lake, JP Nagar Bangalore`}
           className="h-full w-full object-cover transition-opacity duration-300"
         />
 

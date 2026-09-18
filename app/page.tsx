@@ -1,4 +1,5 @@
 import { Enquire } from "@/components/sections/Enquire";
+import { FaqSection } from "@/components/sections/FaqSection";
 import { AmenitiesFacilities } from "@/components/sections/AmenitiesFacilities";
 import { CookieConsent } from "@/components/sections/CookieConsent";
 import { Footer } from "@/components/sections/Footer";
@@ -25,6 +26,7 @@ export default function Home() {
         <GallerySlider />
         <AmenitiesFacilities />
         <Neighborhood />
+        <FaqSection />
         <Enquire />
       </main>
       <Footer />
