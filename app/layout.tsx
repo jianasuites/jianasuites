@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://jianasuites.com";
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.jianasuites.com").replace(/\/$/, "");
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -73,6 +73,23 @@ export const metadata: Metadata = {
     "hotels near JP Nagar 7th Phase for family stay",
     "where to stay near Bannerghatta Road for business trip",
   ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  // Google Search Console verification:
+  // - Primary method: File is located at public/google183e2376ba3269a0.html
+  // - Backup method: If using the HTML tag method, supply via NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION env var or update below:
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+  },
   other: {
     "geo.region": "IN-KA",
     "geo.placename": "Bangalore",
@@ -92,7 +109,7 @@ export const metadata: Metadata = {
     title: "Jiana Suites — Best Hotel Near Arekere Lake, JP Nagar 7th Phase, Bangalore",
     description:
       "Top-rated 3-star hotel opposite Arekere Lake in JP Nagar 7th Phase, South Bangalore. Lake-view rooms, business-friendly stays, and easy access to Bannerghatta Road & Apollo Hospital.",
-    url: siteUrl,
+    url: `${siteUrl}/`,
     siteName: "Jiana Suites",
     images: [
       {
@@ -113,7 +130,7 @@ export const metadata: Metadata = {
     images: ["/images/DJI_20260909174430_0212_D_result.webp"],
   },
   alternates: {
-    canonical: siteUrl,
+    canonical: `${siteUrl}/`,
   },
 };
 
@@ -124,7 +141,7 @@ const hotelSchema = {
   alternateName: "Jiana Suites — Luxury Living",
   description:
     "Premium 3-star hotel in JP Nagar 7th Phase, Bangalore, opposite Arekere Lake, offering lake-view rooms for business, medical, family, and extended stays.",
-  url: siteUrl,
+  url: `${siteUrl}/`,
   image: `${siteUrl}/images/DJI_20260909174430_0212_D_result.webp`,
   address: {
     "@type": "PostalAddress",
