@@ -144,7 +144,7 @@ export function Footer() {
             alt="Jiana Suites Logo"
             className="h-20 sm:h-24 md:h-28 w-auto object-contain mx-auto transition-transform hover:scale-105"
           />
-          <p className="font-nav text-[0.75rem] tracking-[0.08em] text-charcoal/70 mt-3">
+          <p className="font-nav text-[0.75rem] tracking-[0.08em] text-charcoal/70 mt-5">
             Designed by{" "}
             <a
               href="https://dishanwebwing.com/"

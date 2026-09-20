@@ -46,8 +46,8 @@ export function Header() {
   };
 
   return (
-    <header className="fixed left-0 top-0 z-50 w-full bg-hotel-cream text-sage border-b border-charcoal/15 shadow-sm">
-      <div className="section-shell flex h-24 items-center justify-between">
+    <header className="fixed left-0 top-0 z-50 w-full bg-hotel-cream text-sage border-b border-charcoal/15 shadow-sm overflow-visible">
+      <div className="section-shell flex h-24 items-center justify-between overflow-visible">
         {/* Left: Hamburger Button */}
         <div className="flex flex-1 items-center justify-start gap-3">
           <button
@@ -75,12 +75,16 @@ export function Header() {
         </div>
 
         {/* Center: Image Logo scaled up matching Lakeside's header focal point */}
-        <div className="flex shrink-0 items-center justify-center text-center">
-          <Link href="#" className="flex items-center justify-center py-1" onClick={(e) => handleNavClick(e, "#hero")}>
+        <div className="flex shrink-0 items-center justify-center text-center relative overflow-visible">
+          <Link
+            href="#"
+            className="relative z-20 flex items-center justify-center py-1 overflow-visible"
+            onClick={(e) => handleNavClick(e, "#hero")}
+          >
             <img
               src="/jiana-suites-logo.webp"
               alt="Jiana Suites Logo"
-              className="h-14 sm:h-16 md:h-18 w-auto object-contain transition-transform hover:scale-105"
+              className="h-11 sm:h-14 md:h-16 lg:h-[4.5rem] w-auto max-w-none object-contain transition-transform hover:scale-105 drop-shadow-md"
             />
           </Link>
         </div>
