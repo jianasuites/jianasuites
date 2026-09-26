@@ -75,20 +75,20 @@ function ListBlock({
   items: typeof amenities;
 }) {
   return (
-    <article className="bg-white border border-charcoal/10 p-7 sm:p-9 shadow-sm">
+    <article className="bg-white border border-charcoal/10 p-5 sm:p-8 md:p-9 shadow-sm">
       <p className="eyebrow text-sage/75 text-[0.7rem] md:text-[0.75rem] font-semibold tracking-[0.2em] uppercase leading-none">
         {subtitle}
       </p>
       <h3 className="mt-3 font-display text-[1.35rem] md:text-[1.65rem] font-normal leading-[1.25] text-sage">
         {title}
       </h3>
-      <div className="mt-8 grid gap-3 sm:grid-cols-2">
+      <div className="mt-6 sm:mt-8 grid gap-3 sm:grid-cols-2">
         {items.map((item) => {
           const Icon = item.icon;
           return (
             <div
               key={item.label}
-              className="flex min-h-12 items-center gap-3.5 border border-charcoal/10 bg-offwhite/40 px-4 py-3"
+              className="flex min-h-12 items-center gap-3.5 border border-charcoal/10 bg-offwhite/40 px-3.5 py-2.5 sm:px-4 sm:py-3"
             >
               <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sage text-white">
                 <Icon size={15} aria-hidden="true" />

@@ -19,11 +19,11 @@ export function Footer() {
         <div className="mt-6 sm:mt-8 md:mt-10 grid gap-10 text-center md:grid-cols-3 md:gap-0">
           {/* Column 1: Newsletter / Offers */}
           <section className="flex flex-col items-center px-6 md:border-r md:border-charcoal/15">
-            <h2 className="font-display text-[1.35rem] md:text-[1.65rem] font-normal leading-[1.25] text-sage">
+            <h3 className="font-display text-[1.35rem] md:text-[1.65rem] font-normal leading-[1.25] text-sage">
               Stay in Touch &
               <br />
               Receive Offers
-            </h2>
+            </h3>
             <p className="mt-4 max-w-[260px] font-body text-[0.95rem] leading-[1.65] text-charcoal/85">
               Join the Jiana Suites guest list to receive exclusive seasonal rates and updates.
             </p>
@@ -54,23 +54,28 @@ export function Footer() {
             </p>
             <div className="mt-3.5 flex items-center justify-center gap-3.5">
               <a
-                href={whatsappHref("Hi, I'd like to know more about Jiana Suites on Facebook.")}
-                aria-label="Jiana Suites Facebook page"
+                href="https://www.facebook.com/share/1By2WPAfo5/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Jiana Suites on Facebook"
                 className="inline-flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-full bg-white border border-charcoal/15 text-sage transition hover:bg-sage hover:text-white shadow-sm"
               >
                 <Facebook size={19} aria-hidden="true" />
               </a>
               <a
-                href={whatsappHref("Hi, I'd like to follow Jiana Suites on Instagram.")}
-                aria-label="Jiana Suites Instagram page"
+                href="https://www.instagram.com/jianasuites?stkn=MXFiN2tnejFrMHV2OQ=="
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Jiana Suites on Instagram"
                 className="inline-flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-full bg-white border border-charcoal/15 text-sage transition hover:bg-sage hover:text-white shadow-sm"
               >
                 <Instagram size={19} aria-hidden="true" />
               </a>
               <a
-                href="#"
-                title="Jiana Suites YouTube channel (coming soon)"
-                aria-label="Jiana Suites YouTube channel"
+                href="https://youtube.com/@jianasuites?si=pgrxyAMUdhOWQ4di"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Jiana Suites on YouTube"
                 className="inline-flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-full bg-white border border-charcoal/15 text-sage transition hover:bg-sage hover:text-white shadow-sm"
               >
                 <Youtube size={19} aria-hidden="true" />
@@ -80,11 +85,11 @@ export function Footer() {
 
           {/* Column 3: News / Concierge */}
           <section className="flex flex-col items-center px-6">
-            <h2 className="font-display text-[1.35rem] md:text-[1.65rem] font-normal leading-[1.25] text-sage">
+            <h3 className="font-display text-[1.35rem] md:text-[1.65rem] font-normal leading-[1.25] text-sage">
               Direct Concierge
               <br />
               Assistance
-            </h2>
+            </h3>
             <p className="mt-4 max-w-[260px] font-body text-[0.95rem] leading-[1.65] text-charcoal/85">
               Ask our team about lake view rooms, long-stay discounts, or recommendations around JP Nagar.
             </p>
@@ -142,6 +147,8 @@ export function Footer() {
           <img
             src="/jiana-suites-logo.webp"
             alt="Jiana Suites Logo"
+            width={1280}
+            height={587}
             className="h-20 sm:h-24 md:h-28 w-auto object-contain mx-auto transition-transform hover:scale-105"
           />
           <p className="font-nav text-[0.75rem] tracking-[0.08em] text-charcoal/70 mt-5">

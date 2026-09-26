@@ -61,7 +61,7 @@ export function Neighborhood() {
             />
           </div>
 
-          <div className="mt-6 border border-charcoal/15 bg-hotel-cream p-6 sm:p-7 text-sage md:absolute md:-bottom-8 md:right-6 md:max-w-md md:mt-0 shadow-2xl">
+          <div className="mt-6 border border-charcoal/15 bg-hotel-cream p-5 sm:p-7 text-sage md:absolute md:-bottom-8 md:right-6 md:max-w-md md:mt-0 shadow-2xl">
             <p className="font-nav text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-sage/80 leading-none">
               Address
             </p>
@@ -87,7 +87,7 @@ export function Neighborhood() {
             <a
               href={business.directionsUrl}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="btn-lakeside min-h-[44px] mt-6 w-full text-[0.75rem] font-bold tracking-[0.14em] uppercase inline-flex items-center justify-center gap-2"
             >
               <Navigation size={14} aria-hidden="true" />

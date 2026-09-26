@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const galleryImages = [
   {
@@ -9,45 +9,81 @@ const galleryImages = [
     subtitle: "Directly opposite the scenic tranquility of Arekere Lake",
     src: "/images/file_000000000a008211a952181c9ea83005_result.webp",
     alt: "Breathtaking aerial view across Arekere Lake opposite Jiana Suites",
+    width: 1100,
+    height: 495,
   },
   {
     title: "Grand Entrance & Facade",
     subtitle: "Welcoming guests to refined luxury living in South Bangalore",
     src: "/images/DJI_20260909174430_0212_D_result.webp",
     alt: "Exterior illuminated entrance sign and facade of Jiana Suites",
+    width: 1280,
+    height: 720,
   },
   {
     title: "Boutique Reception & Lobby",
     subtitle: "Warm marble finishes, ambient pendant lighting, and 24/7 concierge",
     src: "/images/_DSC3818_result.webp",
     alt: "Jiana Suites reception desk with amber pendant lights and marble wall",
+    width: 1280,
+    height: 720,
   },
   {
     title: "Morning by the Window",
     subtitle: "Artisanal coffee with serene water reflections through the room casement",
     src: "/images/_DSC3821_result.webp",
     alt: "Jiana Suites coffee setup overlooking the lake",
+    width: 1280,
+    height: 720,
   },
   {
     title: "Executive In-Room Comfort",
     subtitle: "Dedicated workstation, ample wardrobe, and thoughtful stay comforts",
     src: "/images/_DSC3976_result.webp",
     alt: "Executive suite work desk, vanity mirror, and seating",
+    width: 1280,
+    height: 720,
   },
 ];
 
 export function GallerySlider() {
   const sliderRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const el = sliderRef.current;
+    if (!el) return;
+
+    const handleScroll = () => {
+      const scrollPos = el.scrollLeft;
+      const firstChild = el.firstElementChild as HTMLElement | null;
+      const itemWidth = firstChild ? firstChild.offsetWidth + 24 : 350;
+      const idx = Math.round(scrollPos / itemWidth);
+      setActiveIndex(Math.max(0, Math.min(galleryImages.length - 1, idx)));
+    };
+
+    el.addEventListener("scroll", handleScroll, { passive: true });
+    return () => el.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToItem = (idx: number) => {
+    if (sliderRef.current) {
+      const firstChild = sliderRef.current.firstElementChild as HTMLElement | null;
+      const itemWidth = firstChild ? firstChild.offsetWidth + 24 : 350;
+      sliderRef.current.scrollTo({ left: idx * itemWidth, behavior: "smooth" });
+      setActiveIndex(idx);
+    }
+  };
 
   const scrollLeft = () => {
     if (sliderRef.current) {
-      sliderRef.current.scrollBy({ left: -400, behavior: "smooth" });
+      sliderRef.current.scrollBy({ left: -380, behavior: "smooth" });
     }
   };
 
   const scrollRight = () => {
     if (sliderRef.current) {
-      sliderRef.current.scrollBy({ left: 400, behavior: "smooth" });
+      sliderRef.current.scrollBy({ left: 380, behavior: "smooth" });
     }
   };
 
@@ -103,6 +139,8 @@ export function GallerySlider() {
                 <img
                   src={item.src}
                   alt={item.alt}
+                  width={item.width}
+                  height={item.height}
                   className="h-full w-full object-cover transition duration-700 hover:scale-105"
                 />
               </div>
@@ -115,6 +153,27 @@ export function GallerySlider() {
                 </p>
               </div>
             </article>
+          ))}
+        </div>
+
+        {/* Position Indicators */}
+        <div className="mt-6 flex justify-center items-center gap-2" aria-label="Gallery slide indicators">
+          {galleryImages.map((_, idx) => (
+            <button
+              key={idx}
+              type="button"
+              onClick={() => scrollToItem(idx)}
+              aria-label={`Go to slide ${idx + 1}`}
+              className="h-11 min-h-[44px] min-w-[28px] px-1 flex items-center justify-center cursor-pointer focus:outline-none"
+            >
+              <span
+                className={`block h-1.5 rounded-full transition-all duration-300 ${
+                  idx === activeIndex
+                    ? "w-8 bg-sage"
+                    : "w-2 bg-charcoal/25 hover:bg-charcoal/45"
+                }`}
+              />
+            </button>
           ))}
         </div>
       </div>

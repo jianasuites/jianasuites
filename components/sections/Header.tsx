@@ -78,19 +78,22 @@ export function Header() {
         <div className="flex shrink-0 items-center justify-center text-center relative overflow-visible">
           <Link
             href="#"
+            aria-label="Jiana Suites — Home"
             className="relative z-20 flex items-center justify-center py-1 overflow-visible"
             onClick={(e) => handleNavClick(e, "#hero")}
           >
             <img
               src="/jiana-suites-logo.webp"
               alt="Jiana Suites Logo"
-              className="h-11 sm:h-14 md:h-16 lg:h-[4.5rem] w-auto max-w-none object-contain transition-transform hover:scale-105 drop-shadow-md"
+              width={1280}
+              height={587}
+              className="h-10 sm:h-14 md:h-16 lg:h-[4.5rem] w-auto max-w-none object-contain transition-transform hover:scale-105 drop-shadow-md"
             />
           </Link>
         </div>
 
         {/* Right: Microcopy + Book Now */}
-        <div className="flex flex-1 items-center justify-end gap-3 sm:gap-4">
+        <div className="flex flex-1 items-center justify-end gap-2 sm:gap-4">
           <div className="hidden xl:flex items-center text-right">
             <span className="font-nav text-[0.75rem] font-medium text-charcoal/85 tracking-wide">
               Your experience begins here:
@@ -98,7 +101,7 @@ export function Header() {
           </div>
           <a
             href={whatsappHref("Hi, I'd like to book a stay at Jiana Suites.")}
-            className="btn-lakeside min-h-[44px] text-[0.75rem] font-bold tracking-[0.14em] uppercase px-5 sm:px-6 py-2.5 shadow-sm inline-flex items-center justify-center"
+            className="btn-lakeside min-h-[44px] text-[0.7rem] sm:text-[0.75rem] font-bold tracking-[0.1em] sm:tracking-[0.14em] uppercase px-3.5 sm:px-6 py-2.5 shadow-sm inline-flex items-center justify-center whitespace-nowrap"
           >
             Book Now
           </a>

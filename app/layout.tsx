@@ -1,13 +1,19 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.jianasuites.com").replace(/\/$/, "");
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Jiana Suites — Best Hotel Near Arekere Lake, JP Nagar 7th Phase, Bangalore",
+  title: "Jiana Suites — Luxury Hotel Near Arekere Lake, Bangalore",
   description:
-    "Top-rated 3-star hotel opposite Arekere Lake in JP Nagar 7th Phase, South Bangalore. Lake-view rooms, business-friendly stays, and easy access to Bannerghatta Road, Apollo Hospital & Brigade Millennium. Book direct — no fees.",
+    "Premium 3-star hotel opposite Arekere Lake in JP Nagar 7th Phase, Bangalore. Lake-view rooms for business, medical & family stays. Book direct.",
   keywords: [
     // Location-based
     "hotel in JP Nagar 7th Phase",
@@ -106,9 +112,9 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   openGraph: {
-    title: "Jiana Suites — Best Hotel Near Arekere Lake, JP Nagar 7th Phase, Bangalore",
+    title: "Jiana Suites — Luxury Hotel Near Arekere Lake, Bangalore",
     description:
-      "Top-rated 3-star hotel opposite Arekere Lake in JP Nagar 7th Phase, South Bangalore. Lake-view rooms, business-friendly stays, and easy access to Bannerghatta Road & Apollo Hospital.",
+      "Premium 3-star hotel opposite Arekere Lake in JP Nagar 7th Phase, Bangalore. Lake-view rooms for business, medical & family stays. Book direct.",
     url: `${siteUrl}/`,
     siteName: "Jiana Suites",
     images: [
@@ -124,9 +130,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Jiana Suites — Best Hotel Near Arekere Lake, JP Nagar 7th Phase, Bangalore",
+    title: "Jiana Suites — Luxury Hotel Near Arekere Lake, Bangalore",
     description:
-      "Top-rated 3-star hotel opposite Arekere Lake in JP Nagar 7th Phase, South Bangalore. Lake-view rooms, business-friendly stays, and easy access to Bannerghatta Road & Apollo Hospital.",
+      "Premium 3-star hotel opposite Arekere Lake in JP Nagar 7th Phase, Bangalore. Lake-view rooms for business, medical & family stays. Book direct.",
     images: ["/images/DJI_20260909174430_0212_D_result.webp"],
   },
   alternates: {

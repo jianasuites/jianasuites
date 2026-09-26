@@ -52,6 +52,8 @@ export function Intro() {
               <img
                 src="/images/file_000000000a008211a952181c9ea83005_result.webp"
                 alt="Jiana Suites luxury hotel grounds and lakefront"
+                width={1100}
+                height={495}
                 className="h-[380px] sm:h-[460px] w-full object-cover transition duration-700 hover:scale-105"
               />
             </div>

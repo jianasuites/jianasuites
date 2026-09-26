@@ -25,9 +25,10 @@ export function ImageBand() {
               const currentDistance = viewportHeight - rect.top;
               const progress = Math.max(0, Math.min(1, currentDistance / totalDistance));
 
-              // Horizontal parallax: slides right-to-left on scroll-down, reverses on scroll-up
-              // Shift range: +18vw when entering to -18vw when leaving
-              const horizontalOffset = (0.5 - progress) * 36;
+              // Horizontal parallax: gentler shift range on mobile (+6vw to -6vw) prevents touch scroll stutter
+              const isMobile = window.innerWidth < 768;
+              const shiftRange = isMobile ? 14 : 36;
+              const horizontalOffset = (0.5 - progress) * shiftRange;
 
               wordmark.style.transform = `translate3d(${horizontalOffset.toFixed(2)}vw, -50%, 0)`;
             }
@@ -51,11 +52,13 @@ export function ImageBand() {
   return (
     <section
       ref={sectionRef}
-      className="relative h-[55vh] min-h-[380px] w-full overflow-hidden bg-sage"
+      className="relative h-[55vh] min-h-[380px] w-full max-w-full overflow-hidden bg-sage"
     >
       <img
         src="/images/file_000000000a008211a952181c9ea83005_result.webp"
         alt="Jiana Suites luxury lounge and reception"
+        width={1100}
+        height={495}
         className="absolute inset-0 h-full w-full object-cover object-center scale-105"
       />
       <div className="absolute inset-0 bg-black/40" />

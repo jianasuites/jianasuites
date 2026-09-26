@@ -109,6 +109,7 @@ export function SuitesGrid() {
 function RoomCard({ suite }: { suite: (typeof suites)[number] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
 
   const prevImage = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -130,25 +131,32 @@ function RoomCard({ suite }: { suite: (typeof suites)[number] }) {
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
   };
 
   const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX.current === null) return;
+    if (touchStartX.current === null || touchStartY.current === null) return;
 
     const touchEndX = e.changedTouches[0].clientX;
-    const diff = touchStartX.current - touchEndX;
+    const touchEndY = e.changedTouches[0].clientY;
+    const diffX = touchStartX.current - touchEndX;
+    const diffY = touchStartY.current - touchEndY;
 
-    if (diff > 40) {
-      setCurrentIndex((prev) =>
-        prev === suite.images.length - 1 ? 0 : prev + 1
-      );
-    } else if (diff < -40) {
-      setCurrentIndex((prev) =>
-        prev === 0 ? suite.images.length - 1 : prev - 1
-      );
+    // Only swipe if horizontal movement dominates vertical scroll
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 35) {
+      if (diffX > 0) {
+        setCurrentIndex((prev) =>
+          prev === suite.images.length - 1 ? 0 : prev + 1
+        );
+      } else {
+        setCurrentIndex((prev) =>
+          prev === 0 ? suite.images.length - 1 : prev - 1
+        );
+      }
     }
 
     touchStartX.current = null;
+    touchStartY.current = null;
   };
 
   return (
@@ -163,6 +171,8 @@ function RoomCard({ suite }: { suite: (typeof suites)[number] }) {
         <img
           src={suite.images[currentIndex]}
           alt={`${suite.name} at Jiana Suites overlooking Arekere Lake, JP Nagar Bangalore`}
+          width={1280}
+          height={720}
           className="h-full w-full object-cover transition-opacity duration-300"
         />
 
@@ -173,10 +183,10 @@ function RoomCard({ suite }: { suite: (typeof suites)[number] }) {
               type="button"
               onClick={prevImage}
               aria-label="Previous photo"
-              className="absolute left-2.5 top-1/2 -translate-y-1/2 h-8 w-8 min-h-[36px] min-w-[36px] rounded-full bg-white/90 hover:bg-white text-charcoal shadow-md flex items-center justify-center transition-transform hover:scale-105 opacity-90 group-hover:opacity-100 z-10 focus:outline-none"
+              className="absolute left-2.5 top-1/2 -translate-y-1/2 h-11 w-11 min-h-[44px] min-w-[44px] rounded-full bg-white/90 hover:bg-white text-charcoal shadow-md flex items-center justify-center transition-transform hover:scale-105 opacity-90 group-hover:opacity-100 z-10 focus:outline-none"
             >
               <ChevronLeft
-                size={16}
+                size={18}
                 aria-hidden="true"
               />
             </button>
@@ -185,10 +195,10 @@ function RoomCard({ suite }: { suite: (typeof suites)[number] }) {
               type="button"
               onClick={nextImage}
               aria-label="Next photo"
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 h-8 w-8 min-h-[36px] min-w-[36px] rounded-full bg-white/90 hover:bg-white text-charcoal shadow-md flex items-center justify-center transition-transform hover:scale-105 opacity-90 group-hover:opacity-100 z-10 focus:outline-none"
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 h-11 w-11 min-h-[44px] min-w-[44px] rounded-full bg-white/90 hover:bg-white text-charcoal shadow-md flex items-center justify-center transition-transform hover:scale-105 opacity-90 group-hover:opacity-100 z-10 focus:outline-none"
             >
               <ChevronRight
-                size={16}
+                size={18}
                 aria-hidden="true"
               />
             </button>

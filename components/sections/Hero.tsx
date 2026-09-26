@@ -1,11 +1,35 @@
 "use client";
 
 import { Calendar, Play, Users } from "lucide-react";
-import { type FormEvent, type ReactNode } from "react";
-import { whatsappHref } from "@/lib/whatsapp";
+import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 import { WaveDivider } from "@/components/ui/WaveDivider";
+import { CheckAvailabilityModal, type BookingDetails } from "@/components/ui/CheckAvailabilityModal";
 
 export function Hero() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [bookingDetails, setBookingDetails] = useState<BookingDetails>({});
+
+  // Auto-open reservation modal once per session after 6 seconds
+  useEffect(() => {
+    try {
+      const alreadyShown = sessionStorage.getItem("reservationPopupShown");
+      if (alreadyShown) return;
+
+      const timer = setTimeout(() => {
+        setIsModalOpen(true);
+        try {
+          sessionStorage.setItem("reservationPopupShown", "true");
+        } catch {
+          // Ignore storage quota/permission error
+        }
+      }, 6000);
+
+      return () => clearTimeout(timer);
+    } catch {
+      // Ignore if sessionStorage is not accessible
+    }
+  }, []);
+
   const handleAvailabilitySubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -14,9 +38,15 @@ export function Hero() {
     const checkOut = String(formData.get("checkOut") || "");
     const adults = String(formData.get("adults") || "2");
     const children = String(formData.get("children") || "0");
-    const message = `Hi, I'd like to check availability at Jiana Suites for Check-In: ${checkIn}, Check-Out: ${checkOut}, Adults: ${adults}, Children: ${children}.`;
 
-    window.open(whatsappHref(message), "_blank", "noopener,noreferrer");
+    setBookingDetails({ checkIn, checkOut, adults, children });
+    setIsModalOpen(true);
+
+    try {
+      sessionStorage.setItem("reservationPopupShown", "true");
+    } catch {
+      // Ignore
+    }
   };
 
   return (
@@ -41,17 +71,17 @@ export function Hero() {
             This is South Bangalore
           </p>
 
-          <h1 className="font-display text-[2.5rem] md:text-[4rem] font-normal leading-[1.12] tracking-[-0.01em] max-w-4xl text-balance text-white">
-            Jiana Suites 
+          <h1 className="font-display text-[1.85rem] xs:text-[2.2rem] sm:text-[3rem] md:text-[4rem] font-normal leading-[1.14] tracking-[-0.01em] max-w-4xl text-balance text-white">
+            Jiana Suites
             <br />
-                       Luxury Lakefront Hotel
+            Luxury Lakefront Hotel
           </h1>
 
-          <p className="eyebrow text-offwhite/85 text-[0.7rem] md:text-[0.75rem] font-semibold tracking-[0.2em] uppercase leading-none mt-5">
+          <p className="eyebrow text-offwhite/85 text-[0.65rem] xs:text-[0.7rem] md:text-[0.75rem] font-semibold tracking-[0.16em] sm:tracking-[0.2em] uppercase leading-none mt-4 sm:mt-5 max-w-lg">
             Top-Rated 3-Star Hotel Opposite Arekere Lake · JP Nagar 7th Phase
           </p>
 
-          <div className="mt-7">
+          <div className="mt-6 sm:mt-7">
             <a
               href="#about"
               className="inline-flex items-center gap-2 rounded-full bg-white/95 hover:bg-white text-charcoal px-6 py-3 min-h-[44px] text-[0.75rem] font-nav font-bold tracking-[0.14em] uppercase transition shadow-md"
@@ -70,13 +100,13 @@ export function Hero() {
             className="bg-hotel-cream p-4 sm:p-5 text-charcoal border border-charcoal/15"
             aria-label="Check availability"
           >
-            <div className="grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-[1.3fr_1.3fr_0.8fr_0.8fr_auto] lg:items-end">
+            <div className="grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-[1.3fr_1.3fr_0.85fr_0.85fr_auto] lg:items-end">
               <BookingField label="Check-In" icon={<Calendar size={14} />}>
                 <input
                   type="date"
                   name="checkIn"
                   required
-                  className="h-11 min-h-[44px] w-full bg-white px-3 font-nav text-xs text-black border border-charcoal/20 focus:outline-none focus:border-sage"
+                  className="h-11 min-h-[44px] w-full bg-white px-3 font-nav text-xs text-black border border-charcoal/20 focus:outline-none focus:border-sage rounded-none appearance-none cursor-pointer"
                 />
               </BookingField>
 
@@ -85,35 +115,23 @@ export function Hero() {
                   type="date"
                   name="checkOut"
                   required
-                  className="h-11 min-h-[44px] w-full bg-white px-3 font-nav text-xs text-black border border-charcoal/20 focus:outline-none focus:border-sage"
+                  className="h-11 min-h-[44px] w-full bg-white px-3 font-nav text-xs text-black border border-charcoal/20 focus:outline-none focus:border-sage rounded-none appearance-none cursor-pointer"
                 />
               </BookingField>
 
               <BookingField label="Adults" icon={<Users size={14} />}>
-                <input
-                  type="number"
-                  name="adults"
-                  min="1"
-                  defaultValue="2"
-                  className="h-11 min-h-[44px] w-full bg-white px-3 font-nav text-xs text-black border border-charcoal/20 focus:outline-none focus:border-sage"
-                />
+                <StepperField name="adults" min={1} defaultValue={2} />
               </BookingField>
 
               <BookingField label="Children" icon={<Users size={14} />}>
-                <input
-                  type="number"
-                  name="children"
-                  min="0"
-                  defaultValue="0"
-                  className="h-11 min-h-[44px] w-full bg-white px-3 font-nav text-xs text-black border border-charcoal/20 focus:outline-none focus:border-sage"
-                />
+                <StepperField name="children" min={0} defaultValue={0} />
               </BookingField>
 
               <button
                 type="submit"
                 className="btn-lakeside h-11 min-h-[44px] w-full lg:w-auto px-7 text-[0.75rem] font-bold tracking-[0.14em] uppercase"
               >
-                Search
+                Check Availability
               </button>
             </div>
           </form>
@@ -124,7 +142,54 @@ export function Hero() {
           <WaveDivider className="text-offwhite" />
         </div>
       </div>
+
+      <CheckAvailabilityModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        bookingDetails={bookingDetails}
+      />
     </section>
+  );
+}
+
+function StepperField({
+  name,
+  min = 0,
+  defaultValue = 1,
+}: {
+  name: string;
+  min?: number;
+  defaultValue?: number;
+}) {
+  const [value, setValue] = useState(defaultValue);
+
+  return (
+    <div className="flex h-11 min-h-[44px] w-full items-center bg-white border border-charcoal/20">
+      <button
+        type="button"
+        onClick={() => setValue((prev) => Math.max(min, prev - 1))}
+        aria-label={`Decrease ${name}`}
+        className="h-full w-11 min-h-[44px] min-w-[44px] flex items-center justify-center text-charcoal hover:bg-charcoal/5 active:bg-charcoal/10 font-bold text-base transition-colors select-none focus:outline-none"
+      >
+        −
+      </button>
+      <input
+        type="number"
+        name={name}
+        min={min}
+        value={value}
+        onChange={(e) => setValue(Math.max(min, parseInt(e.target.value, 10) || min))}
+        className="h-full flex-1 w-full bg-transparent text-center font-nav text-xs font-semibold text-black focus:outline-none [-moz-appearance:textfield] [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
+      />
+      <button
+        type="button"
+        onClick={() => setValue((prev) => prev + 1)}
+        aria-label={`Increase ${name}`}
+        className="h-full w-11 min-h-[44px] min-w-[44px] flex items-center justify-center text-charcoal hover:bg-charcoal/5 active:bg-charcoal/10 font-bold text-base transition-colors select-none focus:outline-none"
+      >
+        +
+      </button>
+    </div>
   );
 }
 
