@@ -5,6 +5,14 @@ import { useEffect, useRef, useState } from "react";
 
 const galleryImages = [
   {
+    title: "Grand Opening Celebration",
+    subtitle: "A joyful welcome to JP Nagar — celebrating the opening of Jiana Suites with our neighbors and first guests.",
+    src: "/images/grand-opening.jpeg",
+    alt: "Grand opening celebration with balloons at the entrance of Jiana Suites",
+    width: 1280,
+    height: 960,
+  },
+  {
     title: "Panoramic Lakefront Setting",
     subtitle: "Directly opposite the scenic tranquility of Arekere Lake",
     src: "/images/file_000000000a008211a952181c9ea83005_result.webp",
@@ -15,7 +23,7 @@ const galleryImages = [
   {
     title: "Grand Entrance & Facade",
     subtitle: "Welcoming guests to refined luxury living in South Bangalore",
-    src: "/images/DJI_20260909174430_0212_D_result.webp",
+    src: "/images/DJI_20260909174430_0212_D_result.png",
     alt: "Exterior illuminated entrance sign and facade of Jiana Suites",
     width: 1280,
     height: 720,
@@ -49,6 +57,10 @@ const galleryImages = [
 export function GallerySlider() {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const pauseTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const activeIndexRef = useRef(activeIndex);
+  activeIndexRef.current = activeIndex;
 
   useEffect(() => {
     const el = sliderRef.current;
@@ -75,17 +87,48 @@ export function GallerySlider() {
     }
   };
 
+  const handleManualAction = (action: () => void) => {
+    action();
+    // Temporarily pause to reset auto-play cadence after a manual click
+    setIsPaused(true);
+    if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
+    pauseTimerRef.current = setTimeout(() => {
+      setIsPaused(false);
+    }, 2200);
+  };
+
   const scrollLeft = () => {
-    if (sliderRef.current) {
-      sliderRef.current.scrollBy({ left: -380, behavior: "smooth" });
-    }
+    const prev = (activeIndexRef.current - 1 + galleryImages.length) % galleryImages.length;
+    handleManualAction(() => scrollToItem(prev));
   };
 
   const scrollRight = () => {
-    if (sliderRef.current) {
-      sliderRef.current.scrollBy({ left: 380, behavior: "smooth" });
-    }
+    const next = (activeIndexRef.current + 1) % galleryImages.length;
+    handleManualAction(() => scrollToItem(next));
   };
+
+  const handleDotClick = (idx: number) => {
+    handleManualAction(() => scrollToItem(idx));
+  };
+
+  // Continuous auto-play advancing every 2.2s for faster, continuous-feeling cycling
+  useEffect(() => {
+    if (isPaused) return;
+
+    const interval = setInterval(() => {
+      const nextIndex = (activeIndexRef.current + 1) % galleryImages.length;
+      scrollToItem(nextIndex);
+    }, 2200);
+
+    return () => clearInterval(interval);
+  }, [isPaused]);
+
+  // Clean up pause timer on unmount
+  useEffect(() => {
+    return () => {
+      if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
+    };
+  }, []);
 
   return (
     <section className="bg-hotel-cream py-20 md:py-28 border-t border-charcoal/10" id="gallery">
@@ -128,6 +171,22 @@ export function GallerySlider() {
         {/* Horizontal Slider */}
         <div
           ref={sliderRef}
+          onMouseEnter={() => {
+            if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
+            setIsPaused(true);
+          }}
+          onMouseLeave={() => {
+            if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
+            setIsPaused(false);
+          }}
+          onTouchStart={() => {
+            if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
+            setIsPaused(true);
+          }}
+          onTouchEnd={() => {
+            if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
+            pauseTimerRef.current = setTimeout(() => setIsPaused(false), 2500);
+          }}
           className="mt-12 flex gap-6 overflow-x-auto pb-4 scroll-smooth snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {galleryImages.map((item, idx) => (
@@ -162,16 +221,15 @@ export function GallerySlider() {
             <button
               key={idx}
               type="button"
-              onClick={() => scrollToItem(idx)}
+              onClick={() => handleDotClick(idx)}
               aria-label={`Go to slide ${idx + 1}`}
               className="h-11 min-h-[44px] min-w-[28px] px-1 flex items-center justify-center cursor-pointer focus:outline-none"
             >
               <span
-                className={`block h-1.5 rounded-full transition-all duration-300 ${
-                  idx === activeIndex
+                className={`block h-1.5 rounded-full transition-all duration-300 ${idx === activeIndex
                     ? "w-8 bg-sage"
                     : "w-2 bg-charcoal/25 hover:bg-charcoal/45"
-                }`}
+                  }`}
               />
             </button>
           ))}

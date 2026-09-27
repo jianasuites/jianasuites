@@ -119,7 +119,7 @@ export const metadata: Metadata = {
     siteName: "Jiana Suites",
     images: [
       {
-        url: "/images/DJI_20260909174430_0212_D_result.webp",
+        url: "/images/DJI_20260909174430_0212_D_result.png",
         width: 1200,
         height: 630,
         alt: "Jiana Suites illuminated facade and entrance in JP Nagar South Bangalore",
@@ -148,7 +148,7 @@ const hotelSchema = {
   description:
     "Premium 3-star hotel in JP Nagar 7th Phase, Bangalore, opposite Arekere Lake, offering lake-view rooms for business, medical, family, and extended stays.",
   url: `${siteUrl}/`,
-  image: `${siteUrl}/images/DJI_20260909174430_0212_D_result.webp`,
+  image: `${siteUrl}/images/DJI_20260909174430_0212_D_result.png`,
   address: {
     "@type": "PostalAddress",
     streetAddress: "435, 8th Cross Road, Lakshmi Layout, JP Nagar 7th Phase, Arekere",

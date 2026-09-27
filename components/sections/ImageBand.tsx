@@ -52,10 +52,10 @@ export function ImageBand() {
   return (
     <section
       ref={sectionRef}
-      className="relative h-[55vh] min-h-[380px] w-full max-w-full overflow-hidden bg-sage"
+      className="relative h-[40vh] sm:h-[45vh] md:h-[50vh] min-h-[260px] sm:min-h-[300px] w-full max-w-full overflow-hidden bg-sage"
     >
       <img
-        src="/images/file_000000000a008211a952181c9ea83005_result.webp"
+        src="/images/_DSC3887_result.webp"
         alt="Jiana Suites luxury lounge and reception"
         width={1100}
         height={495}
@@ -69,7 +69,7 @@ export function ImageBand() {
         className="image-band-wordmark pointer-events-none absolute left-0 top-1/2 z-10 w-full select-none"
         style={{ transform: "translate3d(0vw, -50%, 0)" }}
       >
-        <span className="block text-center whitespace-nowrap font-watermark font-extrabold text-[18vw] md:text-[22vw] uppercase leading-none text-watermark/30 tracking-wider">
+        <span className="block text-center whitespace-nowrap font-watermark font-extrabold text-[9.5vw] sm:text-[9.5vw] md:text-[12vw] uppercase leading-none text-watermark/30 tracking-wider">
           JIANA SUITES
         </span>
       </div>
