@@ -2,8 +2,7 @@
 
 import { useEffect, useState, useRef, type FormEvent } from "react";
 import Link from "next/link";
-import { X, CheckCircle2, Loader2, MessageCircle, AlertCircle } from "lucide-react";
-import { business } from "@/lib/business";
+import { X, CheckCircle2, Loader2, AlertCircle } from "lucide-react";
 import { formatToDisplay } from "@/lib/dates";
 
 export interface BookingDetails {
@@ -84,8 +83,8 @@ export function CheckAvailabilityModal({
     }
 
     const trimmedMobile = mobileNumber.trim();
-    // 10-digit Indian mobile number (optionally with +91 or 91 prefix)
-    const isValidMobile = /^(\+91[\-\s]?)?[6-9]\d{9}$/.test(trimmedMobile);
+    // Exactly 10 numeric digits
+    const isValidMobile = /^[0-9]{10}$/.test(trimmedMobile);
 
     if (!trimmedMobile) {
       setMobileError("Please enter your mobile number");
@@ -98,22 +97,6 @@ export function CheckAvailabilityModal({
     }
 
     return isValid;
-  };
-
-  const getWhatsAppMessage = (name: string, phone: string) => {
-    let msg = `New availability request — Name: ${name.trim()}, Mobile: ${phone.trim()}`;
-    const inDisplay = formatToDisplay(bookingDetails?.checkIn);
-    const outDisplay = formatToDisplay(bookingDetails?.checkOut);
-    if (inDisplay || outDisplay) {
-      msg += `\nStay Dates: ${inDisplay || "Flexible"} to ${outDisplay || "Flexible"}`;
-    }
-    if (bookingDetails?.adults) {
-      msg += `\nGuests: ${bookingDetails.adults} Adults`;
-      if (bookingDetails.children && bookingDetails.children !== "0") {
-        msg += `, ${bookingDetails.children} Children`;
-      }
-    }
-    return msg;
   };
 
   const handleSubmit = async (e: FormEvent) => {
@@ -150,37 +133,22 @@ export function CheckAvailabilityModal({
       if (!res.ok || !data?.success) {
         setSubmitErrorMessage(
           data?.details ||
-            "Unable to submit request right now. Please check your connection or message our front desk directly on WhatsApp."
+            "Unable to submit request right now. Please check your connection or contact our front desk."
         );
         setSubmitError(true);
         return;
       }
 
       setSubmitted(true);
-
-      // WhatsApp backup deep link
-      const whatsappUrl = `https://wa.me/${business.whatsappNumber}?text=${encodeURIComponent(
-        getWhatsAppMessage(name, phone)
-      )}`;
-
-      try {
-        window.open(whatsappUrl, "_blank", "noopener,noreferrer");
-      } catch {
-        // Popup may be blocked by browser; user can still click backup button in confirmation view
-      }
     } catch {
       setSubmitErrorMessage(
-        "Network connection error. Please try again or message our front desk directly on WhatsApp."
+        "Network connection error. Please try again or contact our front desk."
       );
       setSubmitError(true);
     } finally {
       setIsSubmitting(false);
     }
   };
-
-  const whatsappBackupHref = `https://wa.me/${business.whatsappNumber}?text=${encodeURIComponent(
-    getWhatsAppMessage(guestName, mobileNumber)
-  )}`;
 
   return (
     <div
@@ -290,10 +258,62 @@ export function CheckAvailabilityModal({
                 <input
                   id="mobileNumber"
                   type="tel"
+                  inputMode="numeric"
                   name="mobileNumber"
                   value={mobileNumber}
+                  maxLength={10}
+                  pattern="[0-9]{10}"
+                  autoComplete="tel"
                   onChange={(e) => {
-                    setMobileNumber(e.target.value);
+                    const digits = e.target.value.replace(/\D/g, "").slice(0, 10);
+                    setMobileNumber(digits);
+                    if (mobileError) setMobileError("");
+                  }}
+                  onKeyDown={(e) => {
+                    if (
+                      [
+                        "Backspace",
+                        "Delete",
+                        "Tab",
+                        "Escape",
+                        "Enter",
+                        "ArrowLeft",
+                        "ArrowRight",
+                        "ArrowUp",
+                        "ArrowDown",
+                        "Home",
+                        "End",
+                      ].includes(e.key) ||
+                      e.ctrlKey ||
+                      e.metaKey
+                    ) {
+                      return;
+                    }
+                    if (!/^[0-9]$/.test(e.key)) {
+                      e.preventDefault();
+                      return;
+                    }
+                    const input = e.currentTarget;
+                    const isReplacingSelection =
+                      input.selectionStart !== null &&
+                      input.selectionEnd !== null &&
+                      input.selectionStart !== input.selectionEnd;
+                    if (input.value.length >= 10 && !isReplacingSelection) {
+                      e.preventDefault();
+                    }
+                  }}
+                  onPaste={(e) => {
+                    e.preventDefault();
+                    const pasteData = e.clipboardData.getData("text");
+                    const digits = pasteData.replace(/\D/g, "");
+                    if (!digits) return;
+                    const input = e.currentTarget;
+                    const start = input.selectionStart ?? mobileNumber.length;
+                    const end = input.selectionEnd ?? mobileNumber.length;
+                    const nextVal = (mobileNumber.slice(0, start) + digits + mobileNumber.slice(end))
+                      .replace(/\D/g, "")
+                      .slice(0, 10);
+                    setMobileNumber(nextVal);
                     if (mobileError) setMobileError("");
                   }}
                   placeholder="10-digit mobile number (e.g. 9876543210)"
@@ -333,7 +353,7 @@ export function CheckAvailabilityModal({
                     <p className="font-semibold">Unable to submit request</p>
                     <p className="mt-0.5 text-red-700 leading-relaxed">
                       {submitErrorMessage ||
-                        "Please check your network connection or message our front desk directly on WhatsApp."}
+                        "Please check your network connection or contact our front desk."}
                     </p>
                   </div>
                 </div>
@@ -383,21 +403,11 @@ export function CheckAvailabilityModal({
               shortly with confirmed suite options.
             </p>
 
-            <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center items-center">
-              <a
-                href={whatsappBackupHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-lakeside w-full sm:w-auto min-h-[44px] py-3 px-6 inline-flex items-center justify-center gap-2 text-[0.75rem] font-bold tracking-[0.14em] uppercase"
-              >
-                <MessageCircle size={16} />
-                Continue on WhatsApp
-              </a>
-
+            <div className="mt-8 flex justify-center items-center">
               <button
                 type="button"
                 onClick={onClose}
-                className="btn-lakeside-white w-full sm:w-auto min-h-[44px] py-3 px-6 text-[0.75rem] font-bold tracking-[0.14em] uppercase cursor-pointer"
+                className="btn-lakeside w-full sm:w-auto min-h-[44px] py-3 px-8 text-[0.75rem] font-bold tracking-[0.14em] uppercase cursor-pointer"
               >
                 Close
               </button>
