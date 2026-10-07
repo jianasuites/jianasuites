@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { formatToDisplay } from "@/lib/dates";
 
 export async function POST(request: Request) {
   try {
@@ -36,8 +37,8 @@ export async function POST(request: Request) {
       body: JSON.stringify({
         guestName: trimmedName,
         mobileNumber: trimmedMobile,
-        checkIn: checkIn || "",
-        checkOut: checkOut || "",
+        checkIn: formatToDisplay(checkIn) || "",
+        checkOut: formatToDisplay(checkOut) || "",
         adults: adults || "",
         children: children || "",
         timestamp: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),

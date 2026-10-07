@@ -4,6 +4,7 @@ import { useEffect, useState, useRef, type FormEvent } from "react";
 import Link from "next/link";
 import { X, CheckCircle2, Loader2, MessageCircle, AlertCircle } from "lucide-react";
 import { business } from "@/lib/business";
+import { formatToDisplay } from "@/lib/dates";
 
 export interface BookingDetails {
   checkIn?: string;
@@ -101,8 +102,10 @@ export function CheckAvailabilityModal({
 
   const getWhatsAppMessage = (name: string, phone: string) => {
     let msg = `New availability request — Name: ${name.trim()}, Mobile: ${phone.trim()}`;
-    if (bookingDetails?.checkIn || bookingDetails?.checkOut) {
-      msg += `\nStay Dates: ${bookingDetails.checkIn || "Flexible"} to ${bookingDetails.checkOut || "Flexible"}`;
+    const inDisplay = formatToDisplay(bookingDetails?.checkIn);
+    const outDisplay = formatToDisplay(bookingDetails?.checkOut);
+    if (inDisplay || outDisplay) {
+      msg += `\nStay Dates: ${inDisplay || "Flexible"} to ${outDisplay || "Flexible"}`;
     }
     if (bookingDetails?.adults) {
       msg += `\nGuests: ${bookingDetails.adults} Adults`;
@@ -126,14 +129,17 @@ export function CheckAvailabilityModal({
     const phone = mobileNumber.trim();
 
     try {
+      const inDisplay = formatToDisplay(bookingDetails?.checkIn);
+      const outDisplay = formatToDisplay(bookingDetails?.checkOut);
+
       const res = await fetch("/api/reservation", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           guestName: name,
           mobileNumber: phone,
-          checkIn: bookingDetails?.checkIn || "",
-          checkOut: bookingDetails?.checkOut || "",
+          checkIn: inDisplay || "",
+          checkOut: outDisplay || "",
           adults: bookingDetails?.adults || "",
           children: bookingDetails?.children || "",
         }),
@@ -228,7 +234,7 @@ export function CheckAvailabilityModal({
               <div className="mt-4 inline-flex items-center gap-2 rounded-sm bg-sage/10 px-3 py-1.5 text-xs font-nav text-sage border border-sage/15">
                 <span className="font-semibold uppercase tracking-wider text-[0.65rem]">Dates:</span>
                 <span>
-                  {bookingDetails.checkIn || "—"} to {bookingDetails.checkOut || "—"}
+                  {formatToDisplay(bookingDetails.checkIn) || "—"} to {formatToDisplay(bookingDetails.checkOut) || "—"}
                 </span>
                 {bookingDetails.adults && (
                   <span className="text-charcoal/70">

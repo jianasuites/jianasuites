@@ -1,13 +1,42 @@
 "use client";
 
-import { Calendar, Play, Users } from "lucide-react";
-import { useEffect, useState, type FormEvent, type ReactNode } from "react";
+import { AlertCircle, Calendar, Play, Users } from "lucide-react";
+import { useEffect, useState, useMemo, type FormEvent, type ReactNode } from "react";
 import { WaveDivider } from "@/components/ui/WaveDivider";
 import { CheckAvailabilityModal, type BookingDetails } from "@/components/ui/CheckAvailabilityModal";
+import { business } from "@/lib/business";
+import {
+  getToday,
+  addDays,
+  getMaxBookingDate,
+  formatToISO,
+  parseDateStrict,
+  sanitizeDateInputValue,
+  validateBookingDates,
+} from "@/lib/dates";
 
 export function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [bookingDetails, setBookingDetails] = useState<BookingDetails>({});
+
+  // Dynamic current date bounds (automatically updates every year, no hardcoding)
+  const today = useMemo(() => getToday(), []);
+  const todayISO = useMemo(() => formatToISO(today), [today]);
+  const maxBookingISO = useMemo(() => formatToISO(getMaxBookingDate(today)), [today]);
+
+  const [checkIn, setCheckIn] = useState(() => todayISO);
+  const [checkOut, setCheckOut] = useState(() => formatToISO(addDays(today, 1)));
+  const [adults, setAdults] = useState(2);
+  const [children, setChildren] = useState(0);
+  const [dateError, setDateError] = useState("");
+
+  const minCheckOutISO = useMemo(() => {
+    const parsed = parseDateStrict(checkIn);
+    if (parsed) {
+      return formatToISO(addDays(parsed, 1));
+    }
+    return formatToISO(addDays(today, 1));
+  }, [checkIn, today]);
 
   // Auto-open reservation modal once per session after 6 seconds
   useEffect(() => {
@@ -30,23 +59,52 @@ export function Hero() {
     }
   }, []);
 
-  const handleAvailabilitySubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleCheckInChange = (val: string) => {
+    const sanitized = sanitizeDateInputValue(val);
+    setCheckIn(sanitized);
+    if (dateError) setDateError("");
+
+    // If checkIn advances past or equals current checkOut, adjust checkOut to checkIn + 1 day
+    const inDate = parseDateStrict(sanitized);
+    if (inDate) {
+      const outDate = parseDateStrict(checkOut);
+      if (!outDate || outDate.getTime() <= inDate.getTime()) {
+        const nextDay = addDays(inDate, 1);
+        const maxDate = getMaxBookingDate(today);
+        if (nextDay.getTime() <= maxDate.getTime()) {
+          setCheckOut(formatToISO(nextDay));
+        }
+      }
+    }
+  };
+
+  const handleCheckOutChange = (val: string) => {
+    const sanitized = sanitizeDateInputValue(val);
+    setCheckOut(sanitized);
+    if (dateError) setDateError("");
+  };
+
+  const handleBookingSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const formData = new FormData(event.currentTarget);
-    const checkIn = String(formData.get("checkIn") || "");
-    const checkOut = String(formData.get("checkOut") || "");
-    const adults = String(formData.get("adults") || "2");
-    const children = String(formData.get("children") || "0");
-
-    setBookingDetails({ checkIn, checkOut, adults, children });
-    setIsModalOpen(true);
-
-    try {
-      sessionStorage.setItem("reservationPopupShown", "true");
-    } catch {
-      // Ignore
+    const validation = validateBookingDates(checkIn, checkOut);
+    if (!validation.isValid) {
+      setDateError(validation.error || "Please select valid booking dates.");
+      return;
     }
+
+    setDateError("");
+
+    // Keep bookingDetails state synced with valid DD-MM-YYYY dates
+    setBookingDetails({
+      checkIn: validation.checkInDisplay,
+      checkOut: validation.checkOutDisplay,
+      adults: String(adults),
+      children: String(children),
+    });
+
+    // Standalone "BOOK NOW" directly redirects to existing booking engine URL (does NOT open popup)
+    window.location.href = business.bookingUrl;
   };
 
   return (
@@ -96,15 +154,20 @@ export function Hero() {
       <div className="relative z-30 -mt-16 md:-mt-20 px-3 sm:px-6">
         <div className="mx-auto max-w-5xl rounded-sm border border-white/90 p-2 sm:p-2.5 bg-white/10 backdrop-blur-md shadow-2xl">
           <form
-            onSubmit={handleAvailabilitySubmit}
+            onSubmit={handleBookingSubmit}
             className="bg-hotel-cream p-4 sm:p-5 text-charcoal border border-charcoal/15"
-            aria-label="Check availability"
+            aria-label="Book a stay"
           >
             <div className="grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-[1.3fr_1.3fr_0.85fr_0.85fr_auto] lg:items-end">
               <BookingField label="Check-In" icon={<Calendar size={14} />}>
                 <input
                   type="date"
                   name="checkIn"
+                  value={checkIn}
+                  min={todayISO}
+                  max={maxBookingISO}
+                  onChange={(e) => handleCheckInChange(e.target.value)}
+                  onInput={(e) => handleCheckInChange((e.target as HTMLInputElement).value)}
                   required
                   className="h-11 min-h-[44px] w-full bg-white px-3 font-nav text-xs text-black border border-charcoal/20 focus:outline-none focus:border-sage rounded-none appearance-none cursor-pointer"
                 />
@@ -114,26 +177,40 @@ export function Hero() {
                 <input
                   type="date"
                   name="checkOut"
+                  value={checkOut}
+                  min={minCheckOutISO}
+                  max={maxBookingISO}
+                  onChange={(e) => handleCheckOutChange(e.target.value)}
+                  onInput={(e) => handleCheckOutChange((e.target as HTMLInputElement).value)}
                   required
                   className="h-11 min-h-[44px] w-full bg-white px-3 font-nav text-xs text-black border border-charcoal/20 focus:outline-none focus:border-sage rounded-none appearance-none cursor-pointer"
                 />
               </BookingField>
 
               <BookingField label="Adults" icon={<Users size={14} />}>
-                <StepperField name="adults" min={1} defaultValue={2} />
+                <StepperField name="adults" min={1} defaultValue={2} onChange={setAdults} />
               </BookingField>
 
               <BookingField label="Children" icon={<Users size={14} />}>
-                <StepperField name="children" min={0} defaultValue={0} />
+                <StepperField name="children" min={0} defaultValue={0} onChange={setChildren} />
               </BookingField>
 
               <button
                 type="submit"
                 className="btn-lakeside h-11 min-h-[44px] w-full lg:w-auto px-7 text-[0.75rem] font-bold tracking-[0.14em] uppercase"
               >
-                Check Availability
+                Book Now
               </button>
             </div>
+
+            {dateError && (
+              <div className="mt-3 pt-2 border-t border-charcoal/10">
+                <p className="font-nav text-xs text-red-700 flex items-center gap-1.5 font-medium">
+                  <AlertCircle size={14} className="shrink-0" />
+                  <span>{dateError}</span>
+                </p>
+              </div>
+            )}
           </form>
         </div>
 
@@ -156,18 +233,26 @@ function StepperField({
   name,
   min = 0,
   defaultValue = 1,
+  onChange,
 }: {
   name: string;
   min?: number;
   defaultValue?: number;
+  onChange?: (val: number) => void;
 }) {
   const [value, setValue] = useState(defaultValue);
+
+  const updateValue = (nextVal: number) => {
+    const clamped = Math.max(min, nextVal);
+    setValue(clamped);
+    onChange?.(clamped);
+  };
 
   return (
     <div className="flex h-11 min-h-[44px] w-full items-center bg-white border border-charcoal/20">
       <button
         type="button"
-        onClick={() => setValue((prev) => Math.max(min, prev - 1))}
+        onClick={() => updateValue(value - 1)}
         aria-label={`Decrease ${name}`}
         className="h-full w-11 min-h-[44px] min-w-[44px] flex items-center justify-center text-charcoal hover:bg-charcoal/5 active:bg-charcoal/10 font-bold text-base transition-colors select-none focus:outline-none"
       >
@@ -178,12 +263,12 @@ function StepperField({
         name={name}
         min={min}
         value={value}
-        onChange={(e) => setValue(Math.max(min, parseInt(e.target.value, 10) || min))}
+        onChange={(e) => updateValue(parseInt(e.target.value, 10) || min)}
         className="h-full flex-1 w-full bg-transparent text-center font-nav text-xs font-semibold text-black focus:outline-none [-moz-appearance:textfield] [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none"
       />
       <button
         type="button"
-        onClick={() => setValue((prev) => prev + 1)}
+        onClick={() => updateValue(value + 1)}
         aria-label={`Increase ${name}`}
         className="h-full w-11 min-h-[44px] min-w-[44px] flex items-center justify-center text-charcoal hover:bg-charcoal/5 active:bg-charcoal/10 font-bold text-base transition-colors select-none focus:outline-none"
       >
