@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { whatsappHref } from "@/lib/whatsapp";
+import { business } from "@/lib/business";
 
 const suites = [
   {
@@ -245,7 +245,9 @@ function RoomCard({ suite }: { suite: (typeof suites)[number] }) {
           </p>
 
           <a
-            href={whatsappHref(suite.message)}
+            href={business.bookingUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-lakeside min-h-[44px] w-full mt-4 text-[0.75rem] font-bold tracking-[0.14em] uppercase py-3 inline-flex items-center justify-center"
           >
             Book Now

@@ -6,6 +6,8 @@ export const business = {
   phone: "+91 99000 75360",
   email: "jianasuites@gmail.com",
   whatsappNumber: "919900075360",
+  bookingUrl:
+    "https://www.secure-booking-engine.com/accounts/OKq8Oq_4LFOPkcNeHW0iVw/properties/e_bSVNwWhJanEzdleGo_xw/booking-engine/web/source/4wsctBw6Oq6j-g9XuxeRzQ/",
   directionsUrl:
     "https://share.google/aIw6XpRSXR6PKLpzZ",
   mapEmbedUrl:

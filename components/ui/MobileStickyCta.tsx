@@ -1,7 +1,7 @@
 "use client";
 
 import { MessageCircle } from "lucide-react";
-import { whatsappHref } from "@/lib/whatsapp";
+import { business } from "@/lib/business";
 
 export function MobileStickyCta() {
   return (
@@ -13,9 +13,11 @@ export function MobileStickyCta() {
       }}
     >
       <a
-        href={whatsappHref("Hi, I'd like to book a stay at Jiana Suites.")}
+        href={business.bookingUrl}
+        target="_blank"
+        rel="noopener noreferrer"
         className="inline-flex min-h-[48px] items-center gap-2.5 rounded-full bg-sage text-white px-5 py-3 shadow-2xl border border-white/20 font-nav text-xs font-bold tracking-[0.12em] uppercase transition hover:bg-charcoal active:scale-95"
-        aria-label="Book Now on WhatsApp"
+        aria-label="Book Now"
       >
         <MessageCircle size={18} aria-hidden="true" />
         <span>Book Now</span>

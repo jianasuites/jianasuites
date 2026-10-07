@@ -1,9 +1,9 @@
 "use client";
 
-import { MessageCircle, X } from "lucide-react";
+import { X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { whatsappHref } from "@/lib/whatsapp";
+import { business } from "@/lib/business";
 
 const menuItems = [
   { href: "#hero", label: "Home" },
@@ -100,7 +100,9 @@ export function Header() {
             </span>
           </div>
           <a
-            href={whatsappHref("Hi, I'd like to book a stay at Jiana Suites.")}
+            href={business.bookingUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="btn-lakeside min-h-[44px] text-[0.7rem] sm:text-[0.75rem] font-bold tracking-[0.1em] sm:tracking-[0.14em] uppercase px-3.5 sm:px-6 py-2.5 shadow-sm inline-flex items-center justify-center whitespace-nowrap"
           >
             Book Now
@@ -138,12 +140,13 @@ export function Header() {
                 Your experience begins here
               </p>
               <a
-                href={whatsappHref("Hi, I'd like to book a stay at Jiana Suites.")}
+                href={business.bookingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
                 className="btn-lakeside min-h-[44px] w-full max-w-xs py-3 inline-flex items-center justify-center gap-2"
               >
-                <MessageCircle size={16} aria-hidden="true" />
-                Book Now on WhatsApp
+                Book Now
               </a>
             </div>
           </div>
