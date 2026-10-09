@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.jianasuites.com").replace(/\/$/, "");
@@ -254,7 +255,23 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
       </head>
-      <body className="font-body antialiased bg-offwhite text-charcoal">{children}</body>
+      <body className="font-body antialiased bg-offwhite text-charcoal">
+        {children}
+
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-MYCVWG1T4N"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-MYCVWG1T4N');
+          `}
+        </Script>
+      </body>
     </html>
   );
 }
