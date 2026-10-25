@@ -1,18 +1,12 @@
 import { Mail, MapPin, Navigation, Phone } from "lucide-react";
 import { business } from "@/lib/business";
 
-const leftLandmarks = [
-  "Arekere Lake — directly opposite the hotel",
-  "Apollo Hospital & Fortis Hospital — 8 min drive",
-  "IIM Bangalore & Christ University — 10–12 min drive",
-  "Accenture & WeWork JP Nagar — easy corporate access",
-];
-
-const rightLandmarks = [
-  "Bannerghatta Road — 3 min (10 min to tech parks)",
-  "Brigade Millennium & JP Nagar 7th Phase — 6 min drive",
-  "Royal Meenakshi Mall & Third Wave Coffee — 8–10 min drive",
-  "Bannerghatta Biological Park & National Park — easy weekend drive",
+// Distances and drive times are from Google Maps. A row is only listed once its values are confirmed.
+// TODO(owner): add km and minutes by car for Brigade Millennium, Apollo Hospital (Bannerghatta Rd),
+// Fortis Hospital (Bannerghatta Rd), Jayadeva Hospital, IIM Bangalore, Hulimavu metro, IIMB metro,
+// Kempegowda International Airport and Majestic (KSR station).
+const distances: { place: string; distance: string; driveTime?: string }[] = [
+  { place: "Arekere Lake", distance: "Directly opposite the hotel" },
 ];
 
 export function Neighborhood() {
@@ -30,24 +24,38 @@ export function Neighborhood() {
             Set in JP Nagar 7th Phase, Jiana Suites offers guests a tranquil address opposite Arekere Lake while keeping premier hospitals, corporate parks, universities, and dining hubs within quick reach.
           </p>
 
-          <div className="mt-10 grid gap-3.5 sm:grid-cols-2">
-            <div className="flex flex-col gap-3.5">
-              {leftLandmarks.map((landmark) => (
-                <div key={landmark} className="flex items-start gap-3 border-t border-offwhite/20 pt-4">
-                  <MapPin className="mt-1 shrink-0 text-offwhite/90" size={17} aria-hidden="true" />
-                  <p className="font-body text-[0.95rem] leading-[1.6] text-offwhite/90">{landmark}</p>
-                </div>
+          <table className="mt-10 w-full text-left font-body text-[0.95rem] leading-[1.6] text-offwhite/90">
+            <caption className="sr-only">Distance and drive time from Jiana Suites</caption>
+            <thead>
+              <tr className="font-nav text-[0.7rem] uppercase tracking-[0.2em] text-offwhite/75">
+                <th scope="col" className="pb-3 pr-4 font-semibold">Place</th>
+                <th scope="col" className="pb-3 pr-4 font-semibold">Distance</th>
+                <th scope="col" className="pb-3 font-semibold">Drive time</th>
+              </tr>
+            </thead>
+            <tbody>
+              {distances.map((row) => (
+                <tr key={row.place} className="border-t border-offwhite/20">
+                  <th scope="row" className="py-3.5 pr-4 font-normal">
+                    <span className="flex items-start gap-3">
+                      <MapPin className="mt-1 shrink-0 text-offwhite/90" size={17} aria-hidden="true" />
+                      {row.place}
+                    </span>
+                  </th>
+                  {row.driveTime ? (
+                    <>
+                      <td className="py-3.5 pr-4">{row.distance}</td>
+                      <td className="py-3.5">{row.driveTime}</td>
+                    </>
+                  ) : (
+                    <td colSpan={2} className="py-3.5">
+                      {row.distance}
+                    </td>
+                  )}
+                </tr>
               ))}
-            </div>
-            <div className="flex flex-col gap-3.5">
-              {rightLandmarks.map((landmark) => (
-                <div key={landmark} className="flex items-start gap-3 border-t border-offwhite/20 pt-4">
-                  <MapPin className="mt-1 shrink-0 text-offwhite/90" size={17} aria-hidden="true" />
-                  <p className="font-body text-[0.95rem] leading-[1.6] text-offwhite/90">{landmark}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+            </tbody>
+          </table>
         </div>
 
         <div className="relative">
@@ -62,28 +70,30 @@ export function Neighborhood() {
           </div>
 
           <div className="mt-6 border border-charcoal/15 bg-hotel-cream p-5 sm:p-7 text-sage md:absolute md:-bottom-8 md:right-6 md:max-w-md md:mt-0 shadow-2xl">
-            <p className="font-nav text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-sage/80 leading-none">
-              Address
-            </p>
-            <h3 className="mt-2.5 font-display text-[1.35rem] leading-snug text-sage">
-              {business.address}
-            </h3>
-            <div className="mt-5 flex flex-col gap-1 font-nav text-[0.8rem] text-charcoal">
-              <a
-                href={`tel:${business.phone.replace(/\s+/g, "")}`}
-                className="inline-flex items-center gap-2.5 min-h-[44px] hover:text-sage transition"
-              >
-                <Phone size={16} aria-hidden="true" />
-                {business.phone}
-              </a>
-              <a
-                href={`mailto:${business.email}`}
-                className="inline-flex items-center gap-2.5 min-h-[44px] hover:text-sage transition"
-              >
-                <Mail size={16} aria-hidden="true" />
-                {business.email}
-              </a>
-            </div>
+            <address className="not-italic">
+              <p className="font-nav text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-sage/80 leading-none">
+                Address
+              </p>
+              <p className="mt-2.5 font-display text-[1.35rem] leading-snug text-sage">
+                {business.address}
+              </p>
+              <div className="mt-5 flex flex-col gap-1 font-nav text-[0.8rem] text-charcoal">
+                <a
+                  href={`tel:${business.phone.replace(/\s+/g, "")}`}
+                  className="inline-flex items-center gap-2.5 min-h-[44px] hover:text-sage transition"
+                >
+                  <Phone size={16} aria-hidden="true" />
+                  {business.phone}
+                </a>
+                <a
+                  href={`mailto:${business.email}`}
+                  className="inline-flex items-center gap-2.5 min-h-[44px] hover:text-sage transition"
+                >
+                  <Mail size={16} aria-hidden="true" />
+                  {business.email}
+                </a>
+              </div>
+            </address>
             <a
               href={business.directionsUrl}
               target="_blank"

@@ -3,7 +3,7 @@ import { whatsappHref } from "@/lib/whatsapp";
 const tiers = [
   {
     title: "Corporate Stays",
-    copy: "Top choice for business travelers and company guests: quiet rooms, ergonomic work desks, high-speed Wi-Fi, ample parking, and rapid access to Accenture, WeWork JP Nagar, Brigade Millennium, and Bannerghatta Road.",
+    copy: "For business travelers and company guests: quiet rooms, ergonomic work desks, high-speed Wi-Fi, ample parking, and rapid access to Accenture, WeWork JP Nagar, Brigade Millennium, and Bannerghatta Road.",
   },
   {
     title: "Medical Visits",

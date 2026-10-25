@@ -30,7 +30,7 @@ export function Intro() {
             </h2>
             <div className="mt-6 space-y-5 font-body text-[1rem] md:text-[1.125rem] font-normal leading-[1.65] text-offwhite/90">
               <p>
-                Ranked among the best 3-star hotels in South Bangalore, Jiana Suites is an elegant boutique hotel in Lakshmi Layout, JP Nagar 7th Phase. Situated directly opposite Arekere Lake and just 3 minutes from Bannerghatta Road, we provide a peaceful, scenic haven for corporate travelers, medical visitors, and families seeking refined comfort.
+                Jiana Suites is an elegant boutique hotel in Lakshmi Layout, JP Nagar 7th Phase. Situated directly opposite Arekere Lake and just 3 minutes from Bannerghatta Road, we provide a peaceful, scenic haven for corporate travelers, medical visitors, and families seeking refined comfort.
               </p>
               <p>
                 Every detail is tailored for an effortless stay: tranquil lake view rooms, 24-hour attentive guest service, secure on-site parking, high-speed Wi-Fi, and quick connectivity to Apollo Hospital, Fortis Hospital, Christ University, IIM Bangalore, and major South Bengaluru business parks.
@@ -50,10 +50,11 @@ export function Intro() {
           <div className="relative">
             <div className="overflow-hidden rounded-sm shadow-xl border border-offwhite/15">
               <img
-                src="/images/file_000000000a008211a952181c9ea83005_result.webp"
+                src="/images/arekere-lake-view-jiana-suites.webp"
                 alt="Jiana Suites luxury hotel grounds and lakefront"
                 width={1100}
                 height={495}
+                loading="lazy"
                 className="h-[380px] sm:h-[460px] w-full object-cover transition duration-700 hover:scale-105"
               />
             </div>

@@ -3,75 +3,7 @@
 import { useState, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { business } from "@/lib/business";
-
-const suites = [
-  {
-    name: "Premium King Lake View Room",
-    images: [
-      "/images/file_000000004ccc8211b7a248dc7c6ebccf_result.webp",
-    ],
-    description:
-      "A premier king bed hotel room in Bangalore with uninterrupted panoramic views of Arekere Lake, plush bedding, high-speed Wi-Fi, and peaceful natural morning light.",
-    rate: "Contact for best rates",
-    message:
-      "Hi, I'm interested in the Premium King Lake View Room at Jiana Suites. Could you share availability and rates?",
-  },
-  {
-    name: "Premium King Partial Lake View Room",
-    images: [
-      "/images/_DSC3922_result.webp",
-    ],
-    description:
-      "A comfortable king-bed sanctuary featuring a partial lake outlook, uncluttered modern interior, and quiet workspace ideal for corporate and leisure stays.",
-    rate: "Contact for best rates",
-    message:
-      "Hi, I'm interested in the Premium King Partial Lake View Room at Jiana Suites. Could you share availability and rates?",
-  },
-  {
-    name: "Premium Twin Lake View Room",
-    images: [
-      "/images/_DSC3925_result.webp",
-    ],
-    description:
-      "Two premium single beds overlooking the serene lake, tailored for colleagues, friends, or medical attendants seeking comfortable twin sharing rooms in Bangalore.",
-    rate: "Contact for best rates",
-    message:
-      "Hi, I'm interested in the Premium Twin Lake View Room at Jiana Suites. Could you share availability and rates?",
-  },
-  {
-    name: "Deluxe Twin Partial Lake View Room",
-    images: [
-      "/images/_DSC3963_result.webp",
-    ],
-    description:
-      "Thoughtfully appointed twin sharing room with partial lake views, smart workstation, 24-hour hot water, and an easy layout for short or extended stays in JP Nagar.",
-    rate: "Contact for best rates",
-    message:
-      "Hi, I'm interested in the Deluxe Twin Partial Lake View Room at Jiana Suites. Could you share availability and rates?",
-  },
-  {
-    name: "Deluxe Queen Room",
-    images: [
-      "/images/_DSC3894_result.webp",
-    ],
-    description:
-      "A peaceful double room crafted for restful sleep, complete with modern climate control, high-speed Wi-Fi, power backup, and personalized room service.",
-    rate: "Contact for best rates",
-    message:
-      "Hi, I'm interested in the Deluxe Queen Room at Jiana Suites. Could you share availability and rates?",
-  },
-  {
-    name: "Deluxe Queen Lake View Room",
-    images: [
-      "/images/_DSC3831_result.webp",
-    ],
-    description:
-      "Deluxe comfort combined with restful Arekere Lake vistas, smart TV entertainment, and elevated hospitality at an exceptional value in South Bangalore.",
-    rate: "Contact for best rates",
-    message:
-      "Hi, I'm interested in the Deluxe Queen Lake View Room at Jiana Suites. Could you share availability and rates?",
-  },
-];
+import { rooms, type Room } from "@/lib/rooms";
 
 export function SuitesGrid() {
   return (
@@ -92,13 +24,13 @@ export function SuitesGrid() {
           </div>
 
           <p className="font-body text-[1rem] md:text-[1.125rem] font-normal leading-[1.65] text-charcoal">
-            Offering some of the finest lake view rooms in Bangalore, each suite pairs calming Arekere Lake vistas with soft linens, 24-hour hot water, fast Wi-Fi, and amenities tailored for business travelers, medical visitors, families, and extended stays in South Bangalore.
+            Choose from lake-view and partial lake-view rooms with soft linens, 24-hour hot water, fast Wi-Fi, and amenities tailored for business travelers, medical visitors, families, and extended stays in South Bangalore.
           </p>
         </div>
 
         <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {suites.map((suite) => (
-            <RoomCard key={suite.name} suite={suite} />
+          {rooms.map((room) => (
+            <RoomCard key={room.id} room={room} />
           ))}
         </div>
       </div>
@@ -106,7 +38,7 @@ export function SuitesGrid() {
   );
 }
 
-function RoomCard({ suite }: { suite: (typeof suites)[number] }) {
+function RoomCard({ room }: { room: Room }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const touchStartX = useRef<number | null>(null);
   const touchStartY = useRef<number | null>(null);
@@ -116,7 +48,7 @@ function RoomCard({ suite }: { suite: (typeof suites)[number] }) {
     e.stopPropagation();
 
     setCurrentIndex((prev) =>
-      prev === 0 ? suite.images.length - 1 : prev - 1
+      prev === 0 ? room.images.length - 1 : prev - 1
     );
   };
 
@@ -125,7 +57,7 @@ function RoomCard({ suite }: { suite: (typeof suites)[number] }) {
     e.stopPropagation();
 
     setCurrentIndex((prev) =>
-      prev === suite.images.length - 1 ? 0 : prev + 1
+      prev === room.images.length - 1 ? 0 : prev + 1
     );
   };
 
@@ -146,11 +78,11 @@ function RoomCard({ suite }: { suite: (typeof suites)[number] }) {
     if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 35) {
       if (diffX > 0) {
         setCurrentIndex((prev) =>
-          prev === suite.images.length - 1 ? 0 : prev + 1
+          prev === room.images.length - 1 ? 0 : prev + 1
         );
       } else {
         setCurrentIndex((prev) =>
-          prev === 0 ? suite.images.length - 1 : prev - 1
+          prev === 0 ? room.images.length - 1 : prev - 1
         );
       }
     }
@@ -159,8 +91,16 @@ function RoomCard({ suite }: { suite: (typeof suites)[number] }) {
     touchStartY.current = null;
   };
 
+  const facts = [
+    { label: "Bed", value: room.bed.label },
+    { label: "Size", value: room.sizeSqFt ? `${room.sizeSqFt} sq ft` : undefined },
+    { label: "View", value: room.view },
+    { label: "Max guests", value: room.maxGuests?.toString() },
+  ].filter((fact) => fact.value);
+  const image = room.images[currentIndex];
+
   return (
-    <article className="bg-white border border-charcoal/10 shadow-sm flex flex-col justify-between overflow-hidden transition-all duration-300 hover:shadow-md">
+    <article id={room.id} className="bg-white border border-charcoal/10 shadow-sm flex flex-col justify-between overflow-hidden transition-all duration-300 hover:shadow-md">
 
       {/* Image Slider */}
       <div
@@ -169,15 +109,16 @@ function RoomCard({ suite }: { suite: (typeof suites)[number] }) {
         onTouchEnd={handleTouchEnd}
       >
         <img
-          src={suite.images[currentIndex]}
-          alt={`${suite.name} at Jiana Suites overlooking Arekere Lake, JP Nagar Bangalore`}
-          width={1280}
-          height={720}
+          src={image.src}
+          alt={`${room.name} at Jiana Suites${room.view ? " overlooking Arekere Lake" : ""}, JP Nagar Bangalore`}
+          width={image.width}
+          height={image.height}
+          loading="lazy"
           className="h-full w-full object-cover transition-opacity duration-300"
         />
 
         {/* Navigation Arrows */}
-        {suite.images.length > 1 && (
+        {room.images.length > 1 && (
           <>
             <button
               type="button"
@@ -205,7 +146,7 @@ function RoomCard({ suite }: { suite: (typeof suites)[number] }) {
 
             {/* Dot Indicators */}
             <div className="absolute bottom-2.5 left-0 right-0 flex justify-center gap-1.5 z-10">
-              {suite.images.map((_, idx) => (
+              {room.images.map((_, idx) => (
                 <button
                   key={idx}
                   type="button"
@@ -230,19 +171,32 @@ function RoomCard({ suite }: { suite: (typeof suites)[number] }) {
       <div className="p-6 sm:p-7 flex flex-col flex-1 justify-between">
         <div>
           <h3 className="font-display text-[1.35rem] md:text-[1.65rem] font-normal leading-[1.25] text-sage">
-            {suite.name}
+            {room.name}
           </h3>
 
           <p className="mt-3 font-body text-[1rem] leading-[1.65] text-charcoal">
-            {suite.description}
+            {room.description}
           </p>
+
+          <dl className="mt-5 grid grid-cols-2 gap-x-4 gap-y-3 font-nav text-[0.8rem] text-charcoal">
+            {facts.map((fact) => (
+              <div key={fact.label}>
+                <dt className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-sage/80">
+                  {fact.label}
+                </dt>
+                <dd className="mt-1">{fact.value}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
 
         {/* Booking */}
         <div className="mt-8 pt-5 border-t border-charcoal/10">
-          <p className="font-display text-[1.35rem] font-normal text-sage">
-            {suite.rate}
-          </p>
+          {room.priceFrom ? (
+            <p className="font-display text-[1.35rem] font-normal text-sage">
+              From ₹{room.priceFrom.toLocaleString("en-IN")} / night
+            </p>
+          ) : null}
 
           <a
             href={business.bookingUrl}

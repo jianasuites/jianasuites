@@ -28,7 +28,7 @@ export function CookieConsent() {
       <div className="section-shell flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-xs sm:text-[13px] leading-relaxed text-offwhite text-center sm:text-left">
           This site uses cookies as explained in our{" "}
-          <a href="#privacy" className="underline hover:text-white transition">
+          <a href="/cookie-policy" className="underline hover:text-white transition">
             cookie policy
           </a>
           . If you agree to our use of cookies, please close this message and continue to use the site.

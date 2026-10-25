@@ -40,14 +40,16 @@ export function Footer() {
             <p className="font-nav text-[0.7rem] md:text-[0.75rem] font-semibold tracking-[0.2em] uppercase text-sage">
               {business.name}
             </p>
-            <p className="mt-4 font-body text-[0.95rem] leading-[1.65] text-charcoal/90">
+            <address className="mt-4 not-italic font-body text-[0.95rem] leading-[1.65] text-charcoal/90">
               {business.address}
               <br />
-              <span className="mt-2 block">T. {business.phone}</span>
+              <a href={`tel:${business.phone.replace(/\s+/g, "")}`} className="mt-2 block hover:text-sage transition">
+                T. {business.phone}
+              </a>
               <a href={`mailto:${business.email}`} className="mt-1 block hover:text-sage underline transition">
                 {business.email}
               </a>
-            </p>
+            </address>
 
             <p className="mt-6 font-nav text-[0.7rem] font-semibold tracking-[0.2em] uppercase text-sage/80">
               Follow Us
@@ -63,7 +65,7 @@ export function Footer() {
                 <Facebook size={19} aria-hidden="true" />
               </a>
               <a
-                href="https://www.instagram.com/jianasuites?stkn=MXFiN2tnejFrMHV2OQ=="
+                href="https://www.instagram.com/jianasuites/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Jiana Suites on Instagram"
@@ -72,7 +74,7 @@ export function Footer() {
                 <Instagram size={19} aria-hidden="true" />
               </a>
               <a
-                href="https://youtube.com/@jianasuites?si=pgrxyAMUdhOWQ4di"
+                href="https://www.youtube.com/@jianasuites"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Jiana Suites on YouTube"
@@ -133,10 +135,10 @@ export function Footer() {
           </nav>
 
           <div className="flex items-center gap-5 font-nav text-[0.75rem] text-charcoal/70">
-            <Link href="#" className="hover:text-sage transition min-h-[44px] flex items-center">
+            <Link href="/privacy-policy" className="hover:text-sage transition min-h-[44px] flex items-center">
               Privacy Policy
             </Link>
-            <Link href="#" className="hover:text-sage transition min-h-[44px] flex items-center">
+            <Link href="/cookie-policy" className="hover:text-sage transition min-h-[44px] flex items-center">
               Cookie Policy
             </Link>
           </div>
@@ -149,6 +151,7 @@ export function Footer() {
             alt="Jiana Suites Logo"
             width={1280}
             height={587}
+            loading="lazy"
             className="h-20 sm:h-24 md:h-28 w-auto object-contain mx-auto transition-transform hover:scale-105"
           />
           <p className="font-nav text-[0.75rem] tracking-[0.08em] text-charcoal/70 mt-5">

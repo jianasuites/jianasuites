@@ -378,7 +378,7 @@ export function CheckAvailabilityModal({
               </div>
 
               <p className="text-center font-body text-xs text-charcoal/60">
-                Direct booking · Best rate guaranteed · No booking fees
+                Direct booking · No booking fees
               </p>
             </form>
           </div>

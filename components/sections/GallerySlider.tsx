@@ -7,7 +7,7 @@ const galleryImages = [
   {
     title: "Grand Opening Celebration",
     subtitle: "A joyful welcome to JP Nagar — celebrating the opening of Jiana Suites with our neighbors and first guests.",
-    src: "/images/grand-opening.jpeg",
+    src: "/images/jiana-suites-grand-opening-jp-nagar.webp",
     alt: "Grand opening celebration with balloons at the entrance of Jiana Suites",
     width: 1280,
     height: 960,
@@ -15,7 +15,7 @@ const galleryImages = [
   {
     title: "Panoramic Lakefront Setting",
     subtitle: "Directly opposite the scenic tranquility of Arekere Lake",
-    src: "/images/file_000000000a008211a952181c9ea83005_result.webp",
+    src: "/images/arekere-lake-view-jiana-suites.webp",
     alt: "Breathtaking aerial view across Arekere Lake opposite Jiana Suites",
     width: 1100,
     height: 495,
@@ -23,7 +23,7 @@ const galleryImages = [
   {
     title: "Grand Entrance & Facade",
     subtitle: "Welcoming guests to refined luxury living in South Bangalore",
-    src: "/images/DJI_20260909174430_0212_D_result.png",
+    src: "/images/jiana-suites-facade.webp",
     alt: "Exterior illuminated entrance sign and facade of Jiana Suites",
     width: 1280,
     height: 720,
@@ -31,7 +31,7 @@ const galleryImages = [
   {
     title: "Boutique Reception & Lobby",
     subtitle: "Warm marble finishes, ambient pendant lighting, and 24/7 concierge",
-    src: "/images/_DSC3818_result.webp",
+    src: "/images/jiana-suites-reception-lobby.webp",
     alt: "Jiana Suites reception desk with amber pendant lights and marble wall",
     width: 1280,
     height: 720,
@@ -39,7 +39,7 @@ const galleryImages = [
   {
     title: "Morning by the Window",
     subtitle: "Artisanal coffee with serene water reflections through the room casement",
-    src: "/images/_DSC3821_result.webp",
+    src: "/images/coffee-lake-view-window-jiana-suites.webp",
     alt: "Jiana Suites coffee setup overlooking the lake",
     width: 1280,
     height: 720,
@@ -47,7 +47,7 @@ const galleryImages = [
   {
     title: "Executive In-Room Comfort",
     subtitle: "Dedicated workstation, ample wardrobe, and thoughtful stay comforts",
-    src: "/images/_DSC3976_result.webp",
+    src: "/images/executive-room-work-desk-jiana-suites.webp",
     alt: "Executive suite work desk, vanity mirror, and seating",
     width: 1280,
     height: 720,
@@ -200,6 +200,7 @@ export function GallerySlider() {
                   alt={item.alt}
                   width={item.width}
                   height={item.height}
+                  loading="lazy"
                   className="h-full w-full object-cover transition duration-700 hover:scale-105"
                 />
               </div>

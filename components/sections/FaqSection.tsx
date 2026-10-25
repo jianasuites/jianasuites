@@ -2,39 +2,7 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-
-export const faqs = [
-  {
-    question: "What is the best hotel near Arekere Lake and JP Nagar 7th Phase?",
-    answer:
-      "Jiana Suites is regarded as one of the best 3-star boutique hotels near Arekere Lake, located at 435, 8th Cross Road, Lakshmi Layout, JP Nagar 7th Phase, Bangalore – 560076. Located directly opposite Arekere Lake, it offers premium lake-view rooms, high-speed Wi-Fi, secure parking, and immediate access to Bannerghatta Road.",
-  },
-  {
-    question: "Which hotel is closest to Apollo Hospital and Fortis Hospital in JP Nagar?",
-    answer:
-      "Jiana Suites is approximately an 8-minute drive from Apollo Hospital and Fortis Hospital on Bannerghatta Road, making it the most convenient accommodation in South Bangalore for medical visitors, patients, and accompanying families.",
-  },
-  {
-    question: "Is Jiana Suites suitable for business travelers and corporate stays?",
-    answer:
-      "Yes. Jiana Suites is a dedicated corporate stay hotel in JP Nagar, equipped with complimentary high-speed Wi-Fi, ergonomic in-room workstations, 24-hour power backup, and rapid access to business hubs including Brigade Millennium, Accenture, and WeWork.",
-  },
-  {
-    question: "Does Jiana Suites offer long stay, extended stay, or monthly rental options?",
-    answer:
-      "Yes, Jiana Suites provides attractive long stay and monthly rental hotel packages in JP Nagar 7th Phase, with tailored tariffs, daily housekeeping, laundry assistance, and personalized room service for extended corporate or medical visits.",
-  },
-  {
-    question: "Is there a hotel directly opposite Arekere Lake with lake-view rooms?",
-    answer:
-      "Yes, Jiana Suites is set directly opposite Arekere Lake, featuring peaceful lake-view rooms and twin sharing rooms in South Bangalore with soothing water reflections and contemporary interior comforts.",
-  },
-  {
-    question: "How do I book a room at Jiana Suites?",
-    answer:
-      "You can book directly with Jiana Suites by calling +91 99000 75360 or messaging our front desk team on WhatsApp. Booking direct guarantees the best available rates with zero online booking fees.",
-  },
-];
+import { faqs } from "@/lib/faqs";
 
 export function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);

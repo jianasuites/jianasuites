@@ -2,6 +2,7 @@
 
 import { AlertCircle, Calendar, Play, Users } from "lucide-react";
 import { useEffect, useState, useMemo, type FormEvent, type ReactNode } from "react";
+import { preload } from "react-dom";
 import { WaveDivider } from "@/components/ui/WaveDivider";
 import { CheckAvailabilityModal, type BookingDetails } from "@/components/ui/CheckAvailabilityModal";
 import { business } from "@/lib/business";
@@ -15,7 +16,12 @@ import {
   validateBookingDates,
 } from "@/lib/dates";
 
+// Shown while the hero video loads; preloaded at high priority as the LCP image.
+const heroPoster = "/images/jiana-suites-facade.webp";
+
 export function Hero() {
+  preload(heroPoster, { as: "image", fetchPriority: "high" });
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [bookingDetails, setBookingDetails] = useState<BookingDetails>({});
 
@@ -116,6 +122,7 @@ export function Hero() {
           muted
           loop
           playsInline
+          poster={heroPoster}
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source src="/videos/hero-video.mp4" type="video/mp4" />
@@ -130,13 +137,11 @@ export function Hero() {
           </p>
 
           <h1 className="font-display text-[1.85rem] xs:text-[2.2rem] sm:text-[3rem] md:text-[4rem] font-normal leading-[1.14] tracking-[-0.01em] max-w-4xl text-balance text-white">
-            Jiana Suites
-            <br />
-            Luxury Lakefront Hotel
+            Lake View Hotel in JP Nagar 7th Phase, Bangalore
           </h1>
 
           <p className="eyebrow text-offwhite/85 text-[0.65rem] xs:text-[0.7rem] md:text-[0.75rem] font-semibold tracking-[0.16em] sm:tracking-[0.2em] uppercase leading-none mt-4 sm:mt-5 max-w-lg">
-            Top-Rated 3-Star Hotel Opposite Arekere Lake · JP Nagar 7th Phase
+            Jiana Suites · Opposite Arekere Lake
           </p>
 
           <div className="mt-6 sm:mt-7">
