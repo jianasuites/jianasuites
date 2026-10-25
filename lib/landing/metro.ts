@@ -70,7 +70,6 @@ export const metroPage: LandingPageContent = {
     heading: "Car-free travel tips",
     bullets: [
       "Check BMRCL's official announcements for the Pink Line opening date before planning a metro-only trip.",
-      "Until the Pink Line opens, you can combine a cab or auto with the Green Line along Kanakapura Road or the Yellow Line for longer journeys.",
       "Buy QR tickets on your phone through Namma Metro's official channels to skip the queue at the ticket counter.",
       "Autos and app cabs are handy for the short hops between the hotel, the station and offices or hospitals.",
       "Save the hotel's Google Maps pin so drivers can find 8th Cross Road, Lakshmi Layout without guesswork.",
@@ -78,7 +77,7 @@ export const metroPage: LandingPageContent = {
   },
   reach: {
     majestic:
-      "Majestic's Nadaprabhu Kempegowda station is where the Purple and Green Lines meet. For now, a cab is the simplest way from there to the hotel; once the Pink Line opens there will be more metro routes towards Bannerghatta Road.",
+      "From Majestic, a cab is the simplest way to the hotel for now. Once the Pink Line opens, there will be more metro routes towards Bannerghatta Road.",
     airport:
       "From the airport, travel by cab or airport bus with your luggage, then switch to the metro for day-to-day trips once you have settled in at the hotel.",
     bannerghatta:
@@ -105,7 +104,7 @@ export const metroPage: LandingPageContent = {
     {
       question: "How do I get around before the Pink Line opens?",
       answer:
-        "Use app cabs or autos, or combine them with the Green Line on Kanakapura Road or the Yellow Line for longer trips across the city.",
+        "App cabs and autos are the practical choice for now, both for trips along Bannerghatta Road and for the journey from Majestic or the airport.",
     },
     {
       question: "Do I need a car to stay at Jiana Suites?",

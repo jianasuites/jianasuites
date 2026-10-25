@@ -13,10 +13,9 @@ export const hospitalsPage: LandingPageContent = {
   h1: "Stay near Apollo and Fortis Hospital, Bannerghatta Road",
   eyebrow: "Medical stays · Bannerghatta Road",
   heroImage: {
-    src: "/images/jiana-suites-reception-lobby.webp",
+    src: "/images/room-bed-towel-swans-jiana-suites.webp",
     width: 1280,
     height: 720,
-    // The file name says reception, but the photo is a made-up bed with towel swans.
     alt: "Freshly made bed with towel swans in a room at Jiana Suites, JP Nagar 7th Phase",
   },
   lead: "When someone you love is being treated at Apollo Hospital or Fortis Hospital on Bannerghatta Road, the family needs somewhere nearby to rest that is practical and quiet. Jiana Suites, in JP Nagar 7th Phase opposite Arekere Lake, is set up for that kind of stay.",

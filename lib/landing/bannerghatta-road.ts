@@ -13,10 +13,9 @@ export const bannerghattaRoadPage: LandingPageContent = {
   h1: "Hotel near Bannerghatta Road",
   eyebrow: "South Bangalore",
   heroImage: {
-    src: "/images/jiana-suites-lounge-reception.webp",
+    src: "/images/room-seating-corner-jiana-suites.webp",
     width: 1280,
     height: 720,
-    // The file name says lounge/reception, but the photo is a room's seating corner.
     alt: "Seating corner with two chairs and a table in a room at Jiana Suites",
   },
   lead: "Bannerghatta Road is one of South Bangalore's main arteries, running from the city out towards Bannerghatta National Park. Jiana Suites sits near it in JP Nagar 7th Phase, a practical base for work, study, shopping and a day at the Biological Park.",
@@ -75,7 +74,7 @@ export const bannerghattaRoadPage: LandingPageContent = {
   },
   reach: {
     majestic:
-      "From Majestic, the drive heads south through the city towards Jayanagar and Bannerghatta Road; a cab or auto is the simplest option. Another way is the Green Line metro to Jayanagar, then a cab for the rest of the trip.",
+      "From Majestic, the drive heads south through the city towards Jayanagar and Bannerghatta Road; a cab or auto is the simplest option.",
     airport:
       "Cabs from the airport usually reach Bannerghatta Road either through the city centre or along the Outer Ring Road, and your cab app will pick the quicker route for the time of day.",
     bannerghatta:

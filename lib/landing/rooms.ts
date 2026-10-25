@@ -94,7 +94,7 @@ export const roomsPage: LandingPageContent = {
   },
   reach: {
     majestic:
-      "Arriving by train at KSR Bengaluru City or by bus at Kempegowda Bus Station, the simplest option is a cab or auto to the hotel address. If you are travelling light, you can also ride the Green Line metro south from Majestic and take a cab for the last part of the journey.",
+      "Arriving by train at KSR Bengaluru City or by bus at Kempegowda Bus Station, the simplest option is a cab or auto to the hotel address in Lakshmi Layout, JP Nagar 7th Phase.",
     airport:
       "From Kempegowda International Airport, book a cab to 435, 8th Cross Road, Lakshmi Layout, JP Nagar 7th Phase. The route crosses the city from north to south, so leave extra time during the morning and evening rush.",
     bannerghatta:

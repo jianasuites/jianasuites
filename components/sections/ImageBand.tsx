@@ -55,8 +55,8 @@ export function ImageBand() {
       className="relative h-[40vh] sm:h-[45vh] md:h-[50vh] min-h-[260px] sm:min-h-[300px] w-full max-w-full overflow-hidden bg-sage"
     >
       <img
-        src="/images/jiana-suites-lounge-reception.webp"
-        alt="Jiana Suites luxury lounge and reception"
+        src="/images/room-seating-corner-jiana-suites.webp"
+        alt="Room seating corner with two teal chairs, a small table and a large window at Jiana Suites"
         width={1280}
         height={720}
         loading="lazy"

@@ -12,7 +12,7 @@ export function Enquire() {
             Plan Your Stay With Us
           </h2>
           <p className="mx-auto mt-5 max-w-xl font-body text-[1rem] md:text-[1.125rem] font-normal leading-[1.65] text-charcoal">
-            Share your travel dates and stay preferences with us, and our team will help you find the right room at the best available rate.
+            Share your travel dates and stay preferences with us, and our team will help you find the right room at direct rates with no booking fee.
 
             Whether you’re visiting for business, a short stay, or an extended stay, we’re here to make your booking simple and your stay comfortable.
 

@@ -194,7 +194,7 @@ export function CheckAvailabilityModal({
             {/* Body copy */}
             <p className="mt-2 font-body text-[0.95rem] sm:text-[1.05rem] font-normal leading-[1.55] text-charcoal/85">
               Enter your details below and our reservations desk will verify suite
-              availability and provide our best direct booking rates.
+              availability and provide direct rates with no booking fee.
             </p>
 
             {/* Selected Booking Dates Badge if provided */}
@@ -332,8 +332,7 @@ export function CheckAvailabilityModal({
               <div className="space-y-1.5 text-left">
                 <p className="text-[0.7rem] leading-relaxed text-charcoal/60 font-body">
                   By submitting, you agree to our{" "}
-                  {/* TODO(owner): there is no Terms & Conditions page yet; this link goes nowhere until one exists. */}
-                  <Link href="#" className="underline hover:text-sage transition-colors">
+                  <Link href="/terms" className="underline hover:text-sage transition-colors">
                     Terms & Conditions
                   </Link>{" "}
                   and{" "}

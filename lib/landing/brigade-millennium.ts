@@ -5,10 +5,10 @@ export const brigadeMillenniumPage: LandingPageContent = {
   key: "brigade",
   title: "Hotel near Brigade Millennium, JP Nagar – Jiana Suites",
   description:
-    "Visiting Brigade Millennium in JP Nagar 7th Phase? Jiana Suites is a lake-view hotel in Lakshmi Layout for visiting relatives, Woodrose Club events and short work trips.",
+    "Visiting Brigade Millennium in JP Nagar 7th Phase? Jiana Suites is a lake-view hotel in Lakshmi Layout for visiting relatives, family functions and short work trips.",
   ogTitle: "Hotel near Brigade Millennium, JP Nagar 7th Phase | Jiana Suites",
   ogDescription:
-    "A lake-view base in JP Nagar 7th Phase for relatives visiting Brigade Millennium, guests at Woodrose Club functions and short business visits.",
+    "A lake-view base in JP Nagar 7th Phase for relatives visiting Brigade Millennium, guests attending family functions and short business visits.",
   h1: "Hotel near Brigade Millennium, JP Nagar 7th Phase",
   eyebrow: "JP Nagar 7th Phase",
   heroImage: {
@@ -22,7 +22,7 @@ export const brigadeMillenniumPage: LandingPageContent = {
     heading: "A room nearby when family comes to stay",
     paragraphs: [
       "Families living at Brigade Millennium often have relatives arriving for weddings, festivals, a new baby or simply a long-overdue visit. An apartment fills up quickly once grandparents, cousins and their suitcases arrive. A room at Jiana Suites lets your guests stay in the neighbourhood, join you for meals and outings, and still have their own bed, bathroom and quiet space at night.",
-      "If you are attending a function or event at Woodrose Club, the club at Brigade Millennium, staying in JP Nagar 7th Phase saves a late drive home across the city once the evening ends. The same applies to guests you have invited from out of town.",
+      "If you are attending a wedding, birthday or other family function in the area, staying in JP Nagar 7th Phase saves a late drive home across the city once the evening ends. The same applies to guests you have invited from out of town.",
       "The locality also draws short business visits: meetings with clients who live or work around JP Nagar 7th Phase, property visits, and appointments along Bannerghatta Road. For a one- or two-night trip, staying in the same neighbourhood cuts down on cross-city travel.",
     ],
   },
@@ -75,7 +75,7 @@ export const brigadeMillenniumPage: LandingPageContent = {
   },
   reach: {
     majestic:
-      "Relatives arriving at KSR Bengaluru City station or Kempegowda Bus Station can take a cab or auto straight to the hotel. For travellers with light bags, the Green Line metro towards Silk Institute is another option, followed by a cab from a station on Kanakapura Road such as Yelachenahalli.",
+      "Relatives arriving at KSR Bengaluru City station or Kempegowda Bus Station can take a cab or auto straight to the hotel. Give the driver the full address, as the hotel is in Lakshmi Layout rather than inside Brigade Millennium.",
     airport:
       "For family flying in to Kempegowda International Airport, an app cab or a taxi from the airport counter brings them to the hotel door with their luggage. The drive runs across the city from north to south, so build in time for traffic.",
     bannerghatta:
@@ -99,9 +99,9 @@ export const brigadeMillenniumPage: LandingPageContent = {
       answer: "Yes, on-site parking is free for hotel guests.",
     },
     {
-      question: "Is the hotel suitable for guests attending a Woodrose Club function?",
+      question: "Is the hotel suitable for guests attending a function nearby?",
       answer:
-        "Yes. Staying in JP Nagar 7th Phase means guests at a Woodrose Club function avoid a long drive home late at night. Book early around wedding and festival dates.",
+        "Yes. Staying in JP Nagar 7th Phase means guests at an evening function nearby avoid a long drive home late at night. Book early around wedding and festival dates.",
     },
     {
       question: "Can business visitors stay for a short trip?",

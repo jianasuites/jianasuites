@@ -61,6 +61,9 @@ export function PolicyPage({
             <Link href="/cookie-policy" className="hover:text-sage transition min-h-[44px] flex items-center">
               Cookie Policy
             </Link>
+            <Link href="/terms" className="hover:text-sage transition min-h-[44px] flex items-center">
+              Terms
+            </Link>
           </nav>
         </div>
       </footer>
