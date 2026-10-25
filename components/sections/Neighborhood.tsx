@@ -1,13 +1,8 @@
-import { Mail, MapPin, Navigation, Phone } from "lucide-react";
+import Link from "next/link";
+import { Mail, Navigation, Phone } from "lucide-react";
+import { DistanceTable } from "@/components/ui/DistanceTable";
 import { business } from "@/lib/business";
-
-// Distances and drive times are from Google Maps. A row is only listed once its values are confirmed.
-// TODO(owner): add km and minutes by car for Brigade Millennium, Apollo Hospital (Bannerghatta Rd),
-// Fortis Hospital (Bannerghatta Rd), Jayadeva Hospital, IIM Bangalore, Hulimavu metro, IIMB metro,
-// Kempegowda International Airport and Majestic (KSR station).
-const distances: { place: string; distance: string; driveTime?: string }[] = [
-  { place: "Arekere Lake", distance: "Directly opposite the hotel" },
-];
+import { nearbyLinks } from "@/lib/landing-links";
 
 export function Neighborhood() {
   return (
@@ -24,38 +19,25 @@ export function Neighborhood() {
             Set in JP Nagar 7th Phase, Jiana Suites offers guests a tranquil address opposite Arekere Lake while keeping premier hospitals, corporate parks, universities, and dining hubs within quick reach.
           </p>
 
-          <table className="mt-10 w-full text-left font-body text-[0.95rem] leading-[1.6] text-offwhite/90">
-            <caption className="sr-only">Distance and drive time from Jiana Suites</caption>
-            <thead>
-              <tr className="font-nav text-[0.7rem] uppercase tracking-[0.2em] text-offwhite/75">
-                <th scope="col" className="pb-3 pr-4 font-semibold">Place</th>
-                <th scope="col" className="pb-3 pr-4 font-semibold">Distance</th>
-                <th scope="col" className="pb-3 font-semibold">Drive time</th>
-              </tr>
-            </thead>
-            <tbody>
-              {distances.map((row) => (
-                <tr key={row.place} className="border-t border-offwhite/20">
-                  <th scope="row" className="py-3.5 pr-4 font-normal">
-                    <span className="flex items-start gap-3">
-                      <MapPin className="mt-1 shrink-0 text-offwhite/90" size={17} aria-hidden="true" />
-                      {row.place}
-                    </span>
-                  </th>
-                  {row.driveTime ? (
-                    <>
-                      <td className="py-3.5 pr-4">{row.distance}</td>
-                      <td className="py-3.5">{row.driveTime}</td>
-                    </>
-                  ) : (
-                    <td colSpan={2} className="py-3.5">
-                      {row.distance}
-                    </td>
-                  )}
-                </tr>
+          <DistanceTable className="mt-10" />
+
+          <nav aria-label="Explore the area" className="mt-8">
+            <p className="font-nav text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-offwhite/75">
+              Explore the area
+            </p>
+            <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-1 font-nav text-[0.85rem]">
+              {nearbyLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="inline-flex min-h-[44px] items-center text-offwhite underline underline-offset-4 decoration-offwhite/40 hover:decoration-offwhite transition"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
               ))}
-            </tbody>
-          </table>
+            </ul>
+          </nav>
         </div>
 
         <div className="relative">

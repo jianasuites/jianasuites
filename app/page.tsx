@@ -13,9 +13,10 @@ import { Intro } from "@/components/sections/Intro";
 import { Neighborhood } from "@/components/sections/Neighborhood";
 import { RateInfo } from "@/components/sections/RateInfo";
 import { SuitesGrid } from "@/components/sections/SuitesGrid";
+import { JsonLd } from "@/components/ui/JsonLd";
 import { MobileStickyCta } from "@/components/ui/MobileStickyCta";
 import { business } from "@/lib/business";
-import { faqs } from "@/lib/faqs";
+import { faqPageSchema, faqs } from "@/lib/faqs";
 import { rooms } from "@/lib/rooms";
 import { siteUrl } from "@/lib/site";
 
@@ -80,8 +81,8 @@ const hotelSchema = {
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: 12.892151,
-    longitude: 77.590311,
+    latitude: business.geo.latitude,
+    longitude: business.geo.longitude,
   },
   telephone: "+91-99000-75360",
   email: business.email,
@@ -127,27 +128,7 @@ const hotelSchema = {
   }),
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer,
-    },
-  })),
-};
-
-function JsonLd({ data }: { data: object }) {
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\\u003c") }}
-    />
-  );
-}
+const faqSchema = faqPageSchema(faqs);
 
 export default function Home() {
   return (

@@ -6,6 +6,8 @@ export const business = {
   phone: "+91 99000 75360",
   email: "jianasuites@gmail.com",
   whatsappNumber: "919900075360",
+  // Matches the Google Business Profile pin.
+  geo: { latitude: 12.891588, longitude: 77.58837 },
   bookingUrl:
     "https://www.secure-booking-engine.com/accounts/OKq8Oq_4LFOPkcNeHW0iVw/properties/e_bSVNwWhJanEzdleGo_xw/booking-engine/web/source/4wsctBw6Oq6j-g9XuxeRzQ/",
   directionsUrl:

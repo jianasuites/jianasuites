@@ -2,9 +2,17 @@
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { faqs } from "@/lib/faqs";
+import { faqs as homeFaqs, type Faq } from "@/lib/faqs";
 
-export function FaqSection() {
+export function FaqSection({
+  faqs = homeFaqs,
+  heading = "Everything You Need to Know",
+  description = "Find answers to common questions about Jiana Suites, lake-view rooms opposite Arekere Lake, corporate stays in JP Nagar 7th Phase, and direct booking.",
+}: {
+  faqs?: Faq[];
+  heading?: string;
+  description?: string;
+}) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggleFaq = (index: number) => {
@@ -23,10 +31,10 @@ export function FaqSection() {
             Frequently Asked Questions
           </p>
           <h2 className="mt-4 font-display text-[2rem] md:text-[3rem] font-normal leading-[1.15] text-sage">
-            Everything You Need to Know
+            {heading}
           </h2>
           <p className="mx-auto mt-4 max-w-xl font-body text-[1rem] md:text-[1.125rem] font-normal leading-[1.65] text-charcoal">
-            Find answers to common questions about Jiana Suites, lake-view rooms opposite Arekere Lake, corporate stays in JP Nagar 7th Phase, and direct booking.
+            {description}
           </p>
         </div>
 

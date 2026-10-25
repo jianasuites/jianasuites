@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { landingLinks } from "@/lib/landing-links";
 import { siteUrl } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -9,6 +10,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1,
     },
+    ...Object.values(landingLinks).map((link) => ({
+      url: `${siteUrl}${link.href}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
     {
       url: `${siteUrl}/privacy-policy`,
       lastModified: new Date(),

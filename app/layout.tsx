@@ -40,8 +40,8 @@ export const metadata: Metadata = {
   other: {
     "geo.region": "IN-KA",
     "geo.placename": "Bangalore",
-    "geo.position": "12.892151;77.590311",
-    "ICBM": "12.892151, 77.590311",
+    "geo.position": `${business.geo.latitude};${business.geo.longitude}`,
+    "ICBM": `${business.geo.latitude}, ${business.geo.longitude}`,
   },
   icons: {
     icon: [

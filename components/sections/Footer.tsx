@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Facebook, Instagram, MessageCircle, Youtube } from "lucide-react";
 import { business } from "@/lib/business";
+import { nearbyLinks } from "@/lib/landing-links";
 import { whatsappHref } from "@/lib/whatsapp";
 import { WaveDivider } from "@/components/ui/WaveDivider";
 
@@ -105,8 +106,24 @@ export function Footer() {
           </section>
         </div>
 
+        {/* Nearby landing pages */}
+        <nav aria-label="Nearby" className="mt-14 text-center">
+          <p className="font-nav text-[0.7rem] font-semibold tracking-[0.2em] uppercase text-sage/80">
+            Nearby
+          </p>
+          <ul className="mt-3 flex flex-wrap justify-center gap-x-8 gap-y-1 font-nav text-[0.8rem] font-medium tracking-[0.05em]">
+            {nearbyLinks.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href} className="text-charcoal/85 hover:text-sage transition min-h-[44px] flex items-center">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
         {/* Wave Divider Accent */}
-        <div className="mt-16 pt-6 border-t border-charcoal/15">
+        <div className="mt-10 pt-6 border-t border-charcoal/15">
           <WaveDivider className="text-sage/60" />
         </div>
 
@@ -117,19 +134,19 @@ export function Footer() {
           </p>
 
           <nav className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 font-nav text-[0.8rem] font-medium tracking-[0.05em] capitalize">
-            <Link href="#suites" className="text-charcoal/85 hover:text-sage transition min-h-[44px] flex items-center">
+            <Link href="/#suites" className="text-charcoal/85 hover:text-sage transition min-h-[44px] flex items-center">
               Rooms & Suites
             </Link>
-            <Link href="#gallery" className="text-charcoal/85 hover:text-sage transition min-h-[44px] flex items-center">
+            <Link href="/#gallery" className="text-charcoal/85 hover:text-sage transition min-h-[44px] flex items-center">
               Gallery
             </Link>
-            <Link href="#amenities" className="text-charcoal/85 hover:text-sage transition min-h-[44px] flex items-center">
+            <Link href="/#amenities" className="text-charcoal/85 hover:text-sage transition min-h-[44px] flex items-center">
               Amenities
             </Link>
-            <Link href="#neighborhood" className="text-charcoal/85 hover:text-sage transition min-h-[44px] flex items-center">
+            <Link href="/#neighborhood" className="text-charcoal/85 hover:text-sage transition min-h-[44px] flex items-center">
               Location
             </Link>
-            <Link href="#enquire" className="text-charcoal/85 hover:text-sage transition min-h-[44px] flex items-center">
+            <Link href="/#enquire" className="text-charcoal/85 hover:text-sage transition min-h-[44px] flex items-center">
               Contact
             </Link>
           </nav>

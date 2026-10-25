@@ -1,6 +1,24 @@
-// Single source for the visible FAQ (components/sections/FaqSection.tsx) and the
-// FAQPage schema (app/page.tsx). Edit here so both always match.
-export const faqs = [
+export type Faq = { question: string; answer: string };
+
+export function faqPageSchema(items: Faq[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+}
+
+// Single source for the homepage's visible FAQ (components/sections/FaqSection.tsx) and its
+// FAQPage schema (app/page.tsx). Edit here so both always match. Landing pages keep their
+// own FAQ lists in lib/landing/.
+export const faqs: Faq[] = [
   {
     question: "Where is Jiana Suites located?",
     answer:

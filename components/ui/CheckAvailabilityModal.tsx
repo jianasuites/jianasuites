@@ -332,11 +332,12 @@ export function CheckAvailabilityModal({
               <div className="space-y-1.5 text-left">
                 <p className="text-[0.7rem] leading-relaxed text-charcoal/60 font-body">
                   By submitting, you agree to our{" "}
+                  {/* TODO(owner): there is no Terms & Conditions page yet; this link goes nowhere until one exists. */}
                   <Link href="#" className="underline hover:text-sage transition-colors">
                     Terms & Conditions
                   </Link>{" "}
                   and{" "}
-                  <Link href="#" className="underline hover:text-sage transition-colors">
+                  <Link href="/privacy-policy" className="underline hover:text-sage transition-colors">
                     Privacy Policy
                   </Link>
                   . We'll only use your details to contact you about your stay at Jiana Suites.

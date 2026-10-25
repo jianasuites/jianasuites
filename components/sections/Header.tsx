@@ -1,9 +1,11 @@
 "use client";
 
-import { X } from "lucide-react";
+import { ChevronDown, X } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 import { business } from "@/lib/business";
+import { stayMenuLinks } from "@/lib/landing-links";
 
 const menuItems = [
   { href: "#hero", label: "Home" },
@@ -17,20 +19,36 @@ const menuItems = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const [staysOpen, setStaysOpen] = useState(false);
+  const staysRef = useRef<HTMLDivElement>(null);
+  const isHome = usePathname() === "/";
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && open) {
+      if (e.key === "Escape") {
         setOpen(false);
+        setStaysOpen(false);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [open]);
+  }, []);
+
+  useEffect(() => {
+    if (!staysOpen) return;
+    const handlePointerDown = (e: PointerEvent) => {
+      if (!staysRef.current?.contains(e.target as Node)) setStaysOpen(false);
+    };
+    document.addEventListener("pointerdown", handlePointerDown);
+    return () => document.removeEventListener("pointerdown", handlePointerDown);
+  }, [staysOpen]);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
     setOpen(false);
+
+    // Section anchors only exist on the homepage; elsewhere the link goes to "/#section".
+    if (!isHome) return;
+    e.preventDefault();
 
     if (href === "#hero" || href === "#") {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -72,12 +90,46 @@ export function Header() {
               {open ? "Close" : "Menu"}
             </span>
           </button>
+
+          <div ref={staysRef} className="relative hidden md:block">
+            <button
+              type="button"
+              aria-expanded={staysOpen}
+              aria-controls="stays-menu"
+              onClick={() => setStaysOpen((value) => !value)}
+              className="flex h-11 min-h-[44px] items-center gap-1.5 px-1 font-nav text-[0.75rem] font-semibold tracking-[0.14em] uppercase text-charcoal/80 hover:text-black transition focus:outline-none"
+            >
+              Stays
+              <ChevronDown
+                size={14}
+                aria-hidden="true"
+                className={`transition-transform duration-200 ${staysOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+            {staysOpen ? (
+              <div
+                id="stays-menu"
+                className="absolute left-0 top-full z-50 mt-2 w-56 border border-charcoal/15 bg-hotel-cream py-2 shadow-xl"
+              >
+                {stayMenuLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setStaysOpen(false)}
+                    className="flex min-h-[44px] items-center px-5 font-nav text-[0.8rem] font-medium text-charcoal/85 hover:bg-charcoal/5 hover:text-sage transition"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            ) : null}
+          </div>
         </div>
 
         {/* Center: Image Logo scaled up matching Lakeside's header focal point */}
         <div className="flex shrink-0 items-center justify-center text-center relative overflow-visible">
           <Link
-            href="#"
+            href="/"
             aria-label="Jiana Suites — Home"
             className="relative z-20 flex items-center justify-center py-1 overflow-visible"
             onClick={(e) => handleNavClick(e, "#hero")}
@@ -126,7 +178,7 @@ export function Header() {
               {menuItems.map((item) => (
                 <a
                   key={item.label}
-                  href={item.href}
+                  href={isHome ? item.href : `/${item.href}`}
                   onClick={(e) => handleNavClick(e, item.href)}
                   className="font-display text-2xl sm:text-3xl font-normal min-h-[48px] flex items-center justify-center py-2 text-sage hover:text-charcoal hover:scale-105 transition-all duration-150"
                 >
@@ -135,7 +187,25 @@ export function Header() {
               ))}
             </nav>
 
-            <div className="mt-8 flex flex-col items-center gap-4 pt-6 border-t border-charcoal/10">
+            <div className="mx-auto mt-6 max-w-md pt-6 border-t border-charcoal/10 text-center">
+              <p className="font-nav text-[0.7rem] font-semibold tracking-[0.2em] uppercase text-charcoal/70">
+                Stays
+              </p>
+              <nav className="mt-2 flex flex-wrap justify-center gap-x-6" aria-label="Stays">
+                {stayMenuLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className="flex min-h-[44px] items-center font-nav text-[0.9rem] font-medium text-sage hover:text-charcoal transition"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </nav>
+            </div>
+
+            <div className="mt-6 flex flex-col items-center gap-4 pt-6 border-t border-charcoal/10">
               <p className="font-nav text-[0.7rem] font-semibold tracking-[0.2em] uppercase text-charcoal/70">
                 Your experience begins here
               </p>

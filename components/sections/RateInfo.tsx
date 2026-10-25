@@ -1,16 +1,21 @@
+import Link from "next/link";
+import { landingLinks } from "@/lib/landing-links";
 import { whatsappHref } from "@/lib/whatsapp";
 
 const tiers = [
   {
     title: "Corporate Stays",
+    link: landingLinks.corporate.href,
     copy: "For business travelers and company guests: quiet rooms, ergonomic work desks, high-speed Wi-Fi, ample parking, and rapid access to Accenture, WeWork JP Nagar, Brigade Millennium, and Bannerghatta Road.",
   },
   {
     title: "Medical Visits",
+    link: landingLinks.hospitals.href,
     copy: "Comfortable medical visitor accommodation just an 8-minute drive from Apollo Hospital and Fortis Hospital. A tranquil lakefront retreat with lift access, power backup, and caring 24-hour support.",
   },
   {
     title: "Extended Stays",
+    link: landingLinks.monthly.href,
     copy: "Tailored long-stay and monthly rental hotel rates in JP Nagar 7th Phase for guests on extended assignments or personal visits, complete with daily housekeeping and dedicated assistance.",
   },
 ];
@@ -41,6 +46,12 @@ export function RateInfo() {
                 <p className="mt-4 font-body text-[1rem] leading-[1.65] text-charcoal">
                   {tier.copy}
                 </p>
+                <Link
+                  href={tier.link}
+                  className="mt-4 inline-flex min-h-[44px] items-center font-nav text-[0.8rem] font-semibold text-sage underline underline-offset-4 hover:text-charcoal transition"
+                >
+                  More about {tier.title.toLowerCase()}
+                </Link>
               </div>
               <div className="mt-8 pt-6 border-t border-charcoal/10">
                 <a

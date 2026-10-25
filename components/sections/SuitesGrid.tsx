@@ -1,8 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { business } from "@/lib/business";
+import { landingLinks } from "@/lib/landing-links";
 import { rooms, type Room } from "@/lib/rooms";
 
 export function SuitesGrid() {
@@ -33,12 +35,22 @@ export function SuitesGrid() {
             <RoomCard key={room.id} room={room} />
           ))}
         </div>
+
+        <div className="mt-10 text-center">
+          <Link
+            href={landingLinks.rooms.href}
+            className="font-nav text-[0.85rem] font-semibold text-sage underline underline-offset-4 hover:text-charcoal transition inline-flex min-h-[44px] items-center"
+          >
+            Compare all rooms and tariff
+          </Link>
+        </div>
       </div>
     </section>
   );
 }
 
-function RoomCard({ room }: { room: Room }) {
+// `text` replaces the default room description, so landing pages can explain why a room suits that visit.
+export function RoomCard({ room, text }: { room: Room; text?: string }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const touchStartX = useRef<number | null>(null);
   const touchStartY = useRef<number | null>(null);
@@ -175,7 +187,7 @@ function RoomCard({ room }: { room: Room }) {
           </h3>
 
           <p className="mt-3 font-body text-[1rem] leading-[1.65] text-charcoal">
-            {room.description}
+            {text ?? room.description}
           </p>
 
           <dl className="mt-5 grid grid-cols-2 gap-x-4 gap-y-3 font-nav text-[0.8rem] text-charcoal">
